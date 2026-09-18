@@ -1,0 +1,775 @@
+:root {
+    --primary-color: #16a34a;
+    --deep-green: #166534;
+    --light-green: #dcfce7;
+    --main-color: #0f9d58;
+    --white: #fff;
+    --black-color: #111;
+    --text-gray: #6b7280;
+    --border: #e5e7eb;
+    --dashboard-bg: #f5f7fa;
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    --chat-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --general-font: 'Outfit', sans-serif;
+}
+ 
+/* ── RESET ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,h6{
+         font-family: var(--general-font); 
+}
+body {
+font-family: var(--general-font);
+}
+
+ 
+
+/* ══════════════════════════════════════
+   PAGE LAYOUT
+══════════════════════════════════════ */
+.cs-page {
+    display: flex;
+    min-height: 100vh;
+}
+ 
+/* ══════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════ */
+.cs-sidebar {
+    width: 260px;
+    background: #052e16;   
+    color: var(--white);
+    padding: 30px 25px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+    flex-shrink: 0;
+}
+ 
+/* Logo */
+.cs-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 50px;
+}
+ 
+.cs-logo-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 16px;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(134, 239, 172, 0.35);
+}
+
+.cs-sidebar.logo-stacked,
+.cs-sidebar .logo-stacked {
+    align-items: center;
+    gap: 2px;
+}
+
+.cs-sidebar .logo-stacked > div {
+    width: 100%;
+    text-align: center;
+}
+
+.cs-sidebar .logo-stacked > div img {
+    display: block;
+    width: min(150px, 100%);
+    height: auto;
+    max-height: 58px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.cs-sidebar .logo-stacked p {
+    margin-top: 0;
+    text-align: center;
+}
+
+.cs-sidebar .logo-stacked + .sidebar-menu {
+    margin-top: 28px;
+}
+
+.cs-logo-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    padding: 6px;
+}
+ 
+.cs-logo h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+}
+ 
+.cs-logo p {
+    font-size: 12px;
+    color: #b7c9c0;
+    margin: 3px 0 0;
+}
+ 
+/* Sidebar Menu */
+.cs-sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+ 
+.cs-sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #d8e5de;
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+ 
+.cs-sidebar-menu a i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+
+}
+ 
+.cs-sidebar-menu a:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+ 
+.cs-sidebar-menu a.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+ 
+/* ══════════════════════════════════════
+   MAIN CONTENT
+══════════════════════════════════════ */
+.cs-main {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+ 
+/* ══════════════════════════════════════
+   CHAT HEADER
+══════════════════════════════════════ */
+.cs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    flex-shrink: 0;
+    z-index: 10;
+}
+ 
+.cs-header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+ 
+/* AI Avatar */
+.cs-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--deep-green), var(--primary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 22px;
+    position: relative;
+    flex-shrink: 0;
+}
+ 
+.cs-online-dot {
+    width: 13px;
+    height: 13px;
+    background: #22c55e;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+}
+ 
+.cs-header-info h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--black-color);
+    margin: 0 0 4px;
+}
+ 
+.cs-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-gray);
+}
+ 
+.cs-status-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+ 
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+}
+ 
+/* Header Right */
+.cs-header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+ 
+.cs-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--light-green);
+    color: var(--primary-color);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+ 
+.cs-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    background: var(--dashboard-bg);
+    color: var(--text-gray);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+ 
+.cs-back-btn:hover {
+    background: var(--light-green);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+ 
+/* ══════════════════════════════════════
+   CHAT WINDOW
+══════════════════════════════════════ */
+.cs-chat-window {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--dashboard-bg);
+    scroll-behavior: smooth;
+}
+ 
+/* Scrollbar styling */
+.cs-chat-window::-webkit-scrollbar {
+    width: 4px;
+}
+ 
+.cs-chat-window::-webkit-scrollbar-track {
+    background: transparent;
+}
+ 
+.cs-chat-window::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+}
+ 
+/* ── CHAT MESSAGES ── */
+ 
+/* Message Row */
+.cs-msg-row {
+    display: flex;
+    gap: 10px;
+    max-width: 75%;
+    animation: fadeInUp 0.3s ease;
+}
+ 
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+ 
+/* AI Message — Left */
+.cs-msg-row.ai {
+    align-self: flex-start;
+    align-items: flex-end;
+}
+ 
+/* User Message — Right */
+.cs-msg-row.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+ 
+/* Message Avatar */
+.cs-msg-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--deep-green), var(--primary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 14px;
+    flex-shrink: 0;
+}
+ 
+.cs-msg-row.user .cs-msg-avatar {
+    background: #1e40af;
+}
+ 
+/* Message Bubble */
+.cs-bubble {
+    padding: 14px 18px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.65;
+    max-width: 100%;
+    word-break: break-word;
+    box-shadow: var(--chat-shadow);
+}
+ 
+/* AI Bubble */
+.cs-msg-row.ai .cs-bubble {
+    background: var(--white);
+    color: var(--black-color);
+    border-bottom-left-radius: 4px;
+}
+ 
+/* User Bubble */
+.cs-msg-row.user .cs-bubble {
+    background: linear-gradient(135deg, var(--deep-green), var(--primary-color));
+    color: var(--white);
+    border-bottom-right-radius: 4px;
+}
+ 
+/* Message Time */
+.cs-msg-time {
+    font-size: 10px;
+    color: #9ca3af;
+    margin-top: 5px;
+    padding: 0 4px;
+}
+ 
+.cs-msg-row.user .cs-msg-time {
+    text-align: right;
+}
+ 
+/* Message Content Wrapper */
+.cs-msg-content {
+    display: flex;
+    flex-direction: column;
+}
+ 
+/* ── WELCOME CARD ── */
+.cs-welcome-card {
+    background: linear-gradient(135deg, var(--deep-green), var(--primary-color));
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.4s ease;
+}
+ 
+.cs-welcome-card::before {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(45, 188, 9, 0.06);
+    top: -60px;
+    right: -40px;
+}
+ 
+.cs-welcome-greeting {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 6px;
+}
+ 
+.cs-welcome-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+ 
+.cs-welcome-msg {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+}
+ 
+.cs-welcome-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 16px 0;
+}
+ 
+.cs-welcome-tips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+ 
+.cs-tip-chip {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+ 
+/* ── TYPING INDICATOR ── */
+.cs-typing-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    align-self: flex-start;
+    animation: fadeInUp 0.3s ease;
+}
+ 
+.cs-typing-bubble {
+    background: var(--white);
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+    padding: 14px 18px;
+    box-shadow: var(--chat-shadow);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+ 
+.cs-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #9ca3af;
+    animation: bounce 1.2s infinite;
+}
+ 
+.cs-dot:nth-child(2) { animation-delay: 0.2s; }
+.cs-dot:nth-child(3) { animation-delay: 0.4s; }
+ 
+@keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30%            { transform: translateY(-6px); }
+}
+ 
+/* ── REDIRECT CARD ── */
+.cs-redirect-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    box-shadow: var(--chat-shadow);
+}
+ 
+.cs-redirect-card p {
+    font-size: 13px;
+    color: var(--text-gray);
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+ 
+.cs-redirect-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.2s;
+    border: none;
+    cursor: pointer;
+}
+ 
+.cs-redirect-btn:hover {
+    background: var(--deep-green);
+}
+ 
+/* ══════════════════════════════════════
+   QUICK ACTION BUTTONS
+══════════════════════════════════════ */
+.cs-quick-actions {
+    padding: 14px 28px;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+}
+ 
+.cs-quick-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+ 
+.cs-quick-grid {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+ 
+.cs-quick-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: var(--dashboard-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--black-color);
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+ 
+.cs-quick-btn i {
+    color: var(--primary-color);
+    font-size: 13px;
+}
+ 
+.cs-quick-btn:hover {
+    background: var(--light-green);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+ 
+/* ══════════════════════════════════════
+   MESSAGE INPUT AREA
+══════════════════════════════════════ */
+.cs-input-area {
+    padding: 16px 28px 20px;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+}
+ 
+.cs-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--dashboard-bg);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 6px 6px 6px 18px;
+    transition: 0.2s;
+}
+ 
+.cs-input-wrap:focus-within {
+    border-color: var(--primary-color);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.08);
+}
+ 
+.cs-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    color: var(--black-color);
+    padding: 8px 0;
+}
+ 
+.cs-input::placeholder {
+    color: #9ca3af;
+}
+ 
+.cs-send-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: 0.2s;
+    flex-shrink: 0;
+}
+ 
+.cs-send-btn:hover {
+    background: var(--deep-green);
+    transform: scale(1.05);
+}
+ 
+.cs-send-btn:active {
+    transform: scale(0.97);
+}
+ 
+.cs-input-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #9ca3af;
+    margin-top: 8px;
+    padding-left: 4px;
+}
+ 
+.cs-input-hint i {
+    color: var(--primary-color);
+    font-size: 11px;
+}
+ 
+/* ══════════════════════════════════════
+   RESPONSIVE — MOBILE
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+ 
+    /* Hide sidebar on mobile */
+    .cs-sidebar {
+        display: none;
+    }
+ 
+    .cs-main {
+        margin-left: 0;
+        width: 100%;
+        height: 100vh;
+    }
+ 
+    /* Header */
+    .cs-header {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+ 
+    .cs-header-right {
+        gap: 8px;
+    }
+ 
+    .cs-badge {
+        display: none;
+    }
+ 
+    .cs-header-info h2 {
+        font-size: 15px;
+    }
+ 
+    /* Chat window */
+    .cs-chat-window {
+        padding: 16px;
+        gap: 12px;
+    }
+ 
+    .cs-msg-row {
+        max-width: 88%;
+    }
+ 
+    /* Welcome card */
+    .cs-welcome-card {
+        padding: 20px;
+    }
+ 
+    .cs-welcome-name {
+        font-size: 18px;
+    }
+ 
+    /* Quick actions */
+    .cs-quick-actions {
+        padding: 12px 16px;
+    }
+ 
+    .cs-quick-grid {
+        gap: 6px;
+    }
+ 
+    .cs-quick-btn {
+        font-size: 11px;
+        padding: 7px 12px;
+    }
+ 
+    /* Input area */
+    .cs-input-area {
+        padding: 12px 16px 16px;
+    }
+ 
+    .cs-send-btn {
+        width: 42px;
+        height: 42px;
+    }
+ 
+}
+ 
+@media (max-width: 480px) {
+ 
+    .cs-quick-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+ 
+    .cs-quick-btn {
+              justify-content: center;
+    }
+ 
+    .cs-back-btn span {
+        display: none;
+    }
+ 
+}

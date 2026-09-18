@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile & Settings | DAFAH Bank</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- DESKTOP SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo logo-stacked">
+                <div>
+                    <img src="/img/logo.png" alt="DAFAH Bank">
+                    <p>Nigerian Digital Bank</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="/dashboard.html">
+                    <i class="fa-solid fa-chart-pie"></i> Dashboard
+                </a>
+                <a href="/transfer.html">
+                    <i class="fa-solid fa-paper-plane"></i> Transfers
+                </a>
+                <a href="/transaction-history-section/transaction.html">
+                    <i class="fa-solid fa-list-ul"></i> Transactions
+                </a>
+                <a href="#" aria-disabled="true" title="Analytics is not available in this frontend">
+                    <i class="fa-solid fa-chart-line"></i> Analytics
+                </a>
+                <a href="/dashboard.html#cheques-cards" title="Manage your cards and cheques">
+                    <i class="fa-solid fa-credit-card"></i> Cards
+                </a>
+                <a href="/profile.html" class="active">
+                    <i class="fa-solid fa-gears"></i> Settings
+                </a>
+                <a href="/customer-service/customer.html" class="nav-item">
+                    <i class="fa-solid fa-robot"></i> AI Assistant
+                </a>
+                <a href="#" aria-disabled="true" title="Loan service is not available in this frontend">
+                    <i class="fa-solid fa-hand-holding-dollar"></i> Loan
+                </a>
+            </nav>
+        </aside>
+
+        <!-- MAIN LAYOUT -->
+        <main class="main-content">
+
+            <!-- TOPBAR / MOBILE HEADER -->
+            <header class="topbar">
+                <div class="top-left">
+                    <div class="mobile-header-row">
+                        <button class="back-btn" onclick="window.location.href='/dashboard.html'" title="Back to dashboard">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <div>
+                            <p class="welcome-text">Account Control Panel</p>
+                            <h1>Profile & Settings</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="top-right">
+                    <button class="back-home-signout-btn" type="button" onclick="signOutToHome()" title="Sign out and return home">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Back to Home</span>
+                    </button>
+                    <button class="notification-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notify-dot"></span>
+                    </button>
+                    <div class="profile" id="topProfileInitials" onclick="window.location.href='profile.html'">
+                        GP
+                    </div>
+                </div>
+            </header>
+
+            <!-- RESPONSIVE PROFILE CONTAINER -->
+            <div class="profile-grid">
+
+                <!-- LEFT COLUMN: SUMMARY & QUICK ACTIONS -->
+                <div class="profile-left-col">
+                    
+                    <!-- Avatar Card -->
+                    <div class="profile-card-premium">
+                        <div class="avatar-section">
+                            <div class="avatar-large" id="profileAvatar">GP</div>
+                            <button class="edit-avatar-badge" title="Edit Avatar">
+                                <i class="fa-solid fa-camera"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="name-details">
+                            <h2 id="profileName">Grace Peter</h2>
+                            <p class="verification-badge">
+                                <i class="fa-solid fa-circle-check"></i> Tier 3 Fully Verified
+                            </p>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="kyc-progress-wrapper">
+                            <div class="progress-info">
+                                <span>KYC Completion</span>
+                                <span class="progress-pct">100%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill"></div>
+                            </div>
+                        </div>
+
+                        <div class="quick-stats-grid">
+                            <div class="stat-box">
+                                <span class="stat-lbl">Account Type</span>
+                                <span class="stat-val">Savings</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-lbl">Member Since</span>
+                                <span class="stat-val" id="memberSince">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bank Details Card -->
+                    <div class="profile-sub-card">
+                        <h3 class="card-title-new">Banking Information</h3>
+                        
+                        <div class="bank-info-item">
+                            <span class="lbl-dim">Account Number</span>
+                            <div class="val-row">
+                                <span class="val-txt account-num" id="detailAccount">0123456789</span>
+                                <button class="copy-btn-new" onclick="copyToClipboard('detailAccount')" title="Copy Account Number">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bank-info-item">
+                            <span class="lbl-dim">Total Balance</span>
+                            <span class="val-txt bal-val" id="detailBalance">₦12,450,000.50</span>
+                        </div>
+
+                        <div class="bank-info-item">
+                            <span class="lbl-dim">Assigned Branch</span>
+                            <span class="val-txt">DAFAH Head Office (Digital)</span>
+                        </div>
+                    </div>
+
+                    <!-- Sign Out Button -->
+                    <button class="btn-logout-premium" onclick="handleLogout()">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+                    </button>
+                </div>
+
+                <!-- RIGHT COLUMN: DETAILED CONTROL TABS -->
+                <div class="profile-right-col">
+
+                    <!-- Tab Menu Navigation -->
+                    <div class="profile-tabs-nav">
+                        <button class="profile-tab-btn active" data-profile-tab="personal-tab">
+                            <i class="fa-solid fa-user-gear"></i> Personal Info
+                        </button>
+                        <button class="profile-tab-btn" data-profile-tab="security-tab">
+                            <i class="fa-solid fa-shield-halved"></i> Security & Limits
+                        </button>
+                        <button class="profile-tab-btn" data-profile-tab="card-tab">
+                            <i class="fa-solid fa-credit-card"></i> Card Settings
+                        </button>
+                        <button class="profile-tab-btn" data-profile-tab="support-tab">
+                            <i class="fa-solid fa-headset"></i> Support & Actions
+                        </button>
+                    </div>
+
+                    <!-- Tab Panel 1: Personal Details Form -->
+                    <div class="profile-tab-panel active" id="personal-tab">
+                        <div class="panel-card">
+                            <h3>Personal Information</h3>
+                            <p class="panel-desc">Update your personal details. Changes will reflect instantly across your account.</p>
+                            
+                            <form id="editProfileForm" onsubmit="saveProfileEdits(event)">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="editFirstName">First Name</label>
+                                        <input type="text" id="editFirstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editLastName">Last Name</label>
+                                        <input type="text" id="editLastName" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editEmail">Email Address</label>
+                                    <input type="email" id="editEmail" required readonly class="readonly-input" title="Email address cannot be changed">
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="editPhone">Phone Number</label>
+                                        <input type="text" id="editPhone" required placeholder="+234 80 1234 5678">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="displayBVN">Linked BVN</label>
+                                        <div class="input-password-wrapper">
+                                            <input type="text" id="displayBVN" readonly value="222******89">
+                                            <button type="button" class="view-bvn-btn" onclick="toggleBVN()" title="View BVN">
+                                                <i class="fa-solid fa-eye" id="bvnEyeIcon"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editAddress">Home Address</label>
+                                    <input type="text" id="editAddress" required placeholder="E.g. 12 Marina Road, Lagos Island, Lagos">
+                                </div>
+                                <button type="submit" class="btn-save-profile">
+                                    <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                                </button>
+                                <div class="profile-mobile-actions" aria-label="Profile actions">
+                                    <button type="button" class="profile-mobile-signout" onclick="handleLogout()">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        Sign Out
+                                    </button>
+                                    <button type="button" class="profile-mobile-home" onclick="signOutToHome()">
+                                        <i class="fa-solid fa-house"></i>
+                                        Back to Home
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Tab Panel 2: Security & Limits -->
+                    <div class="profile-tab-panel" id="security-tab">
+                        
+                        <!-- Toggle Controls -->
+                        <div class="panel-card">
+                            <h3>Security Preferences</h3>
+                            <p class="panel-desc">Manage authentication credentials and settings for transaction security.</p>
+                            <div class="security-toggles">
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>Two-Factor Authentication (2FA)</h4>
+                                        <p>Require verification codes for external transfers & profile changes</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="toggle2FA" onchange="toggleSecuritySetting('2FA')">
+                                        <span class="slider-round"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>Biometrics Login</h4>
+                                        <p>Enable fingerprint and facial recognition access on mobile apps</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="toggleBiometrics" onchange="toggleSecuritySetting('Biometrics')">
+                                        <span class="slider-round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Limit Sliders -->
+                        <div class="panel-card">
+                            <h3>Transaction Limits</h3>
+                            <p class="panel-desc">Set your daily transaction boundaries to safeguard your bank funds.</p>
+                            
+                            <div class="slider-group">
+                                <div class="slider-header">
+                                    <span>Daily Local Transfer Limit</span>
+                                    <strong id="localLimitVal">₦1,000,000</strong>
+                                </div>
+                                <input type="range" id="localLimitRange" min="10000" max="10000000" step="50000" value="1000000" oninput="updateLimitDisplay('local')">
+                                <div class="slider-labels">
+                                    <span>₦10K</span>
+                                    <span>₦10M</span>
+                                </div>
+                            </div>
+
+                            <div class="slider-group">
+                                <div class="slider-header">
+                                    <span>Daily Global Transfer Limit</span>
+                                    <strong id="globalLimitVal">₦500,000</strong>
+                                </div>
+                                <input type="range" id="globalLimitRange" min="50000" max="5000000" step="50000" value="500000" oninput="updateLimitDisplay('global')">
+                                <div class="slider-labels">
+                                    <span>₦50K</span>
+                                    <span>₦5M</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PIN and Password Tile Actions -->
+                        <div class="panel-card">
+                            <h3>Security Credentials</h3>
+                            <div class="security-actions-grid">
+                                <button class="security-action-tile" onclick="handleChangePassword()">
+                                    <i class="fa-solid fa-key"></i>
+                                    <span>Change Password</span>
+                                </button>
+                                <button class="security-action-tile" onclick="handleChangePIN()">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                    <span>Change Transfer PIN</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Panel 3: Card Management -->
+                    <div class="profile-tab-panel" id="card-tab">
+                        <div class="panel-card card-manage-layout">
+                            <div>
+                                <h3>Virtual Debit Card</h3>
+                                <p class="panel-desc">Lock/unlock your card and manage options for web payments.</p>
+                            </div>
+
+                            <!-- Debit Card Graphic mockup -->
+                            <div class="digital-card-container">
+                                <div class="virtual-bank-card" id="bankCardMock">
+                                    <div class="card-frozen-overlay" id="cardFrozenOverlay">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <p>CARD FROZEN</p>
+                                    </div>
+                                    <div class="card-inner-top">
+                                        <div class="card-brand">
+                                            <i class="fa-solid fa-building-columns"></i>
+                                            <span>DAFAH Bank</span>
+                                        </div>
+                                        <span class="card-type-text">VISA Platinum</span>
+                                    </div>
+                                    <div class="card-inner-mid">
+                                        <div class="card-emv-chip"></div>
+                                        <p class="mock-card-number" id="mockCardNumber">•••• •••• •••• 4587</p>
+                                    </div>
+                                    <div class="card-inner-bottom">
+                                        <div>
+                                            <small>Card Holder</small>
+                                            <h4 id="cardHolderName">Grace Peter</h4>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <small>Expiry / CVV</small>
+                                            <h4>09/28 • <span id="cardCvv">***</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card Toggle Controls -->
+                            <div class="card-toggles-section">
+                                <div class="toggle-row">
+                                    <div class="toggle-info text-danger">
+                                        <h4 style="color: #dc2626;"><i class="fa-solid fa-snowflake"></i> Freeze Card</h4>
+                                        <p>Instantly freeze all operations and transaction capabilities</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="toggleCardFreeze" onchange="toggleCardFreezeState()">
+                                        <span class="slider-round"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>Web Payments (Online)</h4>
+                                        <p>Allow online checkout, shopping, and recurrent subscriptions</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="toggleWebPayments" checked onchange="toggleCardFeature('Web')">
+                                        <span class="slider-round"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>Show Card Details</h4>
+                                        <p>Display full card number and CVV code on screen</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="toggleShowDetails" onchange="toggleShowCardDetails()">
+                                        <span class="slider-round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Panel 4: Support & Quick Actions -->
+                    <div class="profile-tab-panel" id="support-tab">
+                        
+                        <!-- Account Statements Quick links -->
+                        <div class="panel-card">
+                            <h3>Account Operations</h3>
+                            <p class="panel-desc">Quick shortcuts for statements and beneficiary lists.</p>
+                            <div class="operations-grid">
+                                <button class="operation-tile-btn" onclick="location.href='/statement-section/generate-statement.html'">
+                                    <i class="fa-solid fa-file-invoice"></i>
+                                    <div>
+                                        <h4>Generate Account Statement</h4>
+                                        <p>Download and print transactions history PDF/CSV</p>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right arrow-indicator"></i>
+                                </button>
+                                <button class="operation-tile-btn" onclick="location.href='/beneficiaries-section/beneficiaries.html'">
+                                    <i class="fa-solid fa-users"></i>
+                                    <div>
+                                        <h4>Saved Beneficiaries</h4>
+                                        <p>Manage list of verified transfer beneficiaries</p>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right arrow-indicator"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Direct Help Channels -->
+                        <div class="panel-card">
+                            <h3>Customer Support</h3>
+                            <p class="panel-desc">Get in touch with DAFAH Bank customer care agents 24/7.</p>
+                            <div class="support-channels">
+                                <button class="action-btn" onclick="handleContactSupport()">
+                                    <div class="btn-content">
+                                        <div class="btn-icon"><i class="fa-solid fa-comments"></i></div>
+                                        <div class="btn-text">
+                                            <p class="btn-title">Live Chat Support</p>
+                                            <p class="btn-desc">Instant online replies from customer care</p>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
+                                </button>
+                                <button class="action-btn" onclick="showModal('Email Support', 'Contact us at support@dafah.com. Our support team is online and replies within 2 hours.', function(){})">
+                                    <div class="btn-content">
+                                        <div class="btn-icon" style="color: #8b5cf6; background: #f3e8ff;"><i class="fa-solid fa-envelope"></i></div>
+                                        <div class="btn-text">
+                                            <p class="btn-title">Email Helpline</p>
+                                            <p class="btn-desc">Send us a direct banking query email</p>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- FOOTER INFO -->
+            <footer class="profile-footer">
+                <p class="footer-text">DAFAH Bank v1.0</p>
+                <p class="footer-subtext">Secure & premium digital banking. Licensed by the CBN.</p>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- FLOATING MOBILE AI SUPPORT -->
+    <a class="mobile-ai-fab" href="/customer-service/customer.html" aria-label="Open AI customer service">
+        <i class="fa-solid fa-robot"></i>
+    </a>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="mobile-bottom-nav">
+        <a href="/dashboard.html" class="mobile-nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="/transaction-history-section/transaction.html" class="mobile-nav-item">
+            <i class="fa-solid fa-receipt"></i>
+            <span>Transactions</span>
+        </a>
+        <div class="mobile-nav-center">
+            <button class="mobile-nav-center-btn" onclick="openMobileTransferSheet()">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            </button>
+        </div>
+        <button class="mobile-nav-item" onclick="openMobileMoreSheet()">
+            <i class="fa-solid fa-ellipsis-h"></i>
+            <span>More</span>
+        </button>
+        <a href="/profile.html" class="mobile-nav-item active">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- TRANSFER BOTTOM SHEET OVERLAY FOR MOBILE -->
+    <div class="transfer-sheet-overlay" id="transferOverlay" onclick="closeMobileTransferSheet()"></div>
+
+    <!-- TRANSFER BOTTOM SHEET FOR MOBILE -->
+    <div class="transfer-sheet" id="transferSheet">
+        <div class="transfer-sheet-handle"></div>
+        <p class="transfer-sheet-title">Transfer Money</p>
+        <p class="transfer-sheet-sub">Choose transfer type</p>
+
+        <div class="transfer-sheet-grid">
+            <a href="/dafah-transfer.html" class="transfer-sheet-card ts-dafah">
+                <div class="transfer-sheet-icon">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                </div>
+                <h4>DAFAH Transfer</h4>
+                <p>Internal • Free</p>
+            </a>
+
+            <a href="/transfer.html" class="transfer-sheet-card ts-other">
+                <div class="transfer-sheet-icon">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <h4>Other Bank</h4>
+                <p>Any Nigerian bank</p>
+            </a>
+
+            <a href="/global-transfer-section/global-transfer.html" class="transfer-sheet-card ts-global">
+                <div class="transfer-sheet-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <h4>Global Transfer</h4>
+                <p>Send worldwide</p>
+            </a>
+
+            <a href="/scheduled-section/scheduled-transfer.html" class="transfer-sheet-card ts-scheduled">
+                <div class="transfer-sheet-icon">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <h4>Scheduled</h4>
+                <p>Auto transfers</p>
+            </a>
+        </div>
+        <button class="transfer-sheet-cancel" onclick="closeMobileTransferSheet()">Cancel</button>
+    </div>
+
+    <!-- MORE SHEET OVERLAY FOR MOBILE -->
+    <div class="transfer-sheet-overlay" id="moreOverlay" onclick="closeMobileMoreSheet()"></div>
+
+    <!-- MORE SHEET FOR MOBILE -->
+    <div class="transfer-sheet" id="moreSheet">
+        <div class="transfer-sheet-handle"></div>
+        <p class="transfer-sheet-title">More Services</p>
+        <p class="transfer-sheet-sub">Account & other services</p>
+
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px;">
+            <a href="/transaction-history-section/transaction.html" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;">
+                    <i class="fa-solid fa-receipt" style="color:#16a34a;"></i>
+                </div>
+                <div>
+                    <p class="more-sheet-title">Transaction History</p>
+                    <p class="more-sheet-sub">View all transactions</p>
+                </div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+
+            <a href="/statement-section/generate-statement.html" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;">
+                    <i class="fa-solid fa-file-export" style="color:#16a34a;"></i>
+                </div>
+                <div>
+                    <p class="more-sheet-title">Generate Statement</p>
+                    <p class="more-sheet-sub">Export PDF or CSV</p>
+                </div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+
+            <a href="/beneficiaries-section/beneficiaries.html" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;">
+                    <i class="fa-solid fa-users" style="color:#16a34a;"></i>
+                </div>
+                <div>
+                    <p class="more-sheet-title">Beneficiaries</p>
+                    <p class="more-sheet-sub">Saved contacts</p>
+                </div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+
+            <a href="/analytics.html" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;"><i class="fa-solid fa-chart-line" style="color:#16a34a;"></i></div>
+                <div><p class="more-sheet-title">Analytics</p><p class="more-sheet-sub">Track your finances</p></div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+            <a href="/dashboard.html#cheques-cards" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;"><i class="fa-solid fa-credit-card" style="color:#16a34a;"></i></div>
+                <div><p class="more-sheet-title">Cards</p><p class="more-sheet-sub">Manage your cards</p></div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+            <a href="/loan-section/loan.html" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;"><i class="fa-solid fa-hand-holding-dollar" style="color:#16a34a;"></i></div>
+                <div><p class="more-sheet-title">Loan</p><p class="more-sheet-sub">Apply and manage loans</p></div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+        </div>
+        <button class="transfer-sheet-cancel" onclick="closeMobileMoreSheet()">Cancel</button>
+    </div>
+
+    <!-- CONFIRMATION MODAL -->
+    <div class="modal-overlay" id="confirmModal" style="display:none;" onclick="closeConfirmModal()">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 id="modalTitle">Confirm Action</h3>
+                <button class="modal-close" onclick="closeConfirmModal()">✕</button>
+            </div>
+            <p id="modalMessage">Are you sure?</p>
+            <div class="modal-actions">
+                <button class="modal-btn cancel-btn" onclick="closeConfirmModal()">Cancel</button>
+                <button class="modal-btn confirm-btn" id="confirmBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/profile.js"></script>
+    <script src="/js/theme.js"></script>
+
+</body>
+
+</html>

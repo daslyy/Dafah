@@ -1,0 +1,327 @@
+/* ==========================================================================
+   Premium Brand Footer Styles (DAFAH Website)
+   ========================================================================== */
+
+:root {
+    --footer-bg: #06140b;          /* Deep forest footer */
+    --footer-bottom-bg: #030b06;   /* Darker bottom strip */
+    --footer-text: rgba(255, 255, 255, 0.75); /* Clean light grey-white */
+    --footer-heading: #628829;     /* Original olive green headers */
+    --footer-accent: #ffffff;      /* White hover highlights */
+    --footer-border: rgba(255, 255, 255, 0.08); /* Clean modern thin dividing lines */
+}
+
+/* Base Footer Section Container */
+footer {
+    background-color: var(--footer-bg);
+    padding-top: 60px;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--footer-text);
+}
+
+/* Inner Footer Layout Container */
+footer .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Primary Multi-Column Link Block */
+.first {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px;
+    padding: 40px 0 60px;
+    border-bottom: 1px solid var(--footer-border);
+}
+
+/* Individual Columns */
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-column h3 {
+    color: var(--footer-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 24px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+    color: var(--footer-text);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-column ul li:hover {
+    color: var(--footer-accent);
+    transform: translateX(4px);
+    cursor: pointer;
+}
+
+/* Contacts & Branding Block */
+.contacts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--footer-border);
+}
+
+
+
+/* Phone Contacts Grid */
+.contacts ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.contacts li {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--footer-heading);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+}
+
+.contacts li:hover {
+    cursor: pointer;
+    color: var(--footer-accent);
+}
+
+/* Bottom Copyright & Social Media Bar */
+.bottom {
+    background-color: var(--footer-bottom-bg);
+    border-top: 1px solid var(--footer-border);
+    padding: 30px 40px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.bottom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.bottom p {
+    font-size: 0.85rem;
+    color: #64748b; /* Slate-500 muted text */
+    margin: 0;
+}
+
+/* Policy links and social buttons */
+.bottom ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+/* Legal text link paragraphs */
+.bottom ul p {
+    font-size: 0.85rem;
+    color: var(--footer-text);
+    cursor: pointer;
+    margin: 0;
+    transition: color 0.2s ease;
+}
+
+.bottom ul p:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Social Icon Pill Containers */
+.bottom ul li {
+    list-style: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.bottom ul li i {
+    font-size: 0.9rem;
+    color: var(--footer-text) !important; /* Force override for inline style tags */
+    transition: color 0.25s ease;
+}
+
+.bottom ul li:hover {
+    background-color: var(--footer-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(126, 242, 161, 0.3);
+    border-color: var(--footer-accent);
+    cursor: pointer;
+}
+
+.bottom ul li:hover i {
+    color: var(--footer-bg) !important; /* turns icon dark grey for stunning visual pop */
+}
+
+/* ==========================================================================
+   Responsive Spacings & Mobile Media Queries
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .first {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding-top: 40px;
+    }
+
+    footer .container {
+        width: min(100% - 36px, 640px);
+    }
+
+    .first {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        padding-bottom: 40px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    .footer-column {
+        align-items: center;
+        width: 100%;
+    }
+
+    .footer-column h3 {
+        margin-bottom: 16px;
+    }
+
+    .footer-column li {
+        margin-bottom: 12px;
+    }
+
+    .footer-column ul li:hover {
+        transform: none;
+    }
+
+    .contacts {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        padding: 30px 0;
+    }
+
+    .contacts ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .contacts li {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .bottom {
+        padding: 24px 20px;
+    }
+
+    .bottom-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .bottom ul {
+        justify-content: center;
+        width: 100%;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer .container {
+        width: min(100% - 32px, 420px);
+    }
+
+    .first {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 28px 0 36px;
+    }
+
+    .footer-column h3 {
+        font-size: 0.95rem;
+        letter-spacing: 1.2px;
+    }
+
+    .contacts {
+        padding: 28px 0;
+    }
+
+    .contacts li {
+        max-width: 280px;
+        line-height: 1.5;
+    }
+
+    .bottom {
+        padding: 24px 16px;
+    }
+    
+    .bottom p {
+        font-size: 0.8rem;
+    }
+
+    .bottom ul {
+        gap: 12px;
+    }
+
+    .bottom ul p {
+        flex: 0 0 100%;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   body.dark-theme Variable Overrides for Footer
+   ========================================================================== */
+body.dark-theme {
+    --footer-bg: #090d16;          /* Deep rich brand charcoal/slate */
+    --footer-bottom-bg: #05070c;   /* Ultra dark slate base */
+    --footer-text: #94a3b8;        /* Slate-400 for highly readable links */
+    --footer-heading: #ffffff;     /* White for premium headers */
+    --footer-accent: #7ef2a1;      /* Vibrant neon mint green for hover states */
+    --footer-border: rgba(255, 255, 255, 0.08);
+}

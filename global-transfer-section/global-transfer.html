@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Transfer — DAFAH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/global-transfer-section/global-transfer.css">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+
+<body>
+
+    <div class="gt-page">
+
+        <!-- TOP -->
+        <div class="gt-top">
+            <button class="back-btn" onclick="window.location.href='/dashboard.html'">
+                ← Back
+            </button>
+            <div>
+                <p class="gt-label">Send Money Worldwide</p>
+                <h1>Global Transfer</h1>
+            </div>
+        </div>
+
+        <!-- STEPS INDICATOR -->
+        <div class="gt-steps">
+            <div class="gt-step active" id="stepIndicator1">
+                <div class="gt-step-num">1</div>
+                <p>Convert</p>
+            </div>
+            <div class="gt-step-line"></div>
+            <div class="gt-step" id="stepIndicator2">
+                <div class="gt-step-num">2</div>
+                <p>Recipient</p>
+            </div>
+            <div class="gt-step-line"></div>
+            <div class="gt-step" id="stepIndicator3">
+                <div class="gt-step-num">3</div>
+                <p>Review</p>
+            </div>
+            <div class="gt-step-line"></div>
+            <div class="gt-step" id="stepIndicator4">
+                <div class="gt-step-num">4</div>
+                <p>Done</p>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="gt-content">
+
+            <!-- STEP 1 — CONVERTER -->
+            <div class="gt-card" id="gtStep1">
+
+                <div class="gt-card-header">
+                    <div class="gt-header-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div>
+                        <p class="gt-card-title">Currency Converter</p>
+                        <p class="gt-card-sub">Enter amount and select destination</p>
+                    </div>
+                </div>
+
+                <!-- YOU SEND -->
+                <div class="gt-input-group">
+                    <label>You Send (Naira)</label>
+                    <div class="gt-send-wrap">
+                        <div class="gt-currency-tag">
+                            <span class="gt-flag">🇳🇬</span>
+                            <span class="gt-currency-code">NGN</span>
+                        </div>
+                        <input type="number" id="gtAmount" placeholder="0.00" oninput="calculateConversion()">
+                    </div>
+                    <p class="gt-amount-words" id="gtAmountWords"></p>
+                </div>
+
+                <!-- SWAP ICON -->
+                <div class="gt-swap-row">
+                    <div class="gt-swap-line"></div>
+                    <div class="gt-swap-btn">⇅</div>
+                    <div class="gt-swap-line"></div>
+                </div>
+
+                <!-- RATE INFO -->
+                <div class="gt-rate-strip" id="gtRateStrip">
+                    <div>
+                        <p class="gt-rate-label">Exchange Rate</p>
+                        <p class="gt-rate-val" id="gtRateDisplay">Select country</p>
+                    </div>
+                    <div>
+                        <p class="gt-rate-label">Transfer Fee</p>
+                        <p class="gt-rate-val gt-fee-val" id="gtFeeDisplay">—</p>
+                    </div>
+                    <div>
+                        <p class="gt-rate-label">Delivery</p>
+                        <p class="gt-rate-val gt-delivery-val">1-3 Days</p>
+                    </div>
+                </div>
+
+                <!-- RECIPIENT GETS -->
+                <div class="gt-input-group">
+                    <label>Recipient Gets</label>
+                    <div class="gt-receive-wrap">
+
+                        <!-- COUNTRY SELECTOR -->
+                        <div class="gt-country-selector" id="gtCountrySelector" onclick="toggleCountryDropdown()">
+                            <span class="gt-flag" id="gtSelectedFlag">🌍</span>
+                            <div>
+                                <p class="gt-selected-code" id="gtSelectedCode">Select</p>
+                                <p class="gt-selected-country" id="gtSelectedCountry">Country</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-down gt-chevron" id="gtChevron"></i>
+                        </div>
+
+                        <div class="gt-converted-amount">
+                            <p class="gt-converted-label">Converted</p>
+                            <p class="gt-converted-val" id="gtConvertedAmount">0.00</p>
+                        </div>
+
+                    </div>
+
+                    <!-- DROPDOWN -->
+                    <div class="gt-dropdown" id="gtDropdown" style="display:none;">
+                        <div class="gt-dropdown-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="gtCountrySearch" placeholder="Search country or currency..."
+                                oninput="filterCountries()">
+                        </div>
+                        <div class="gt-dropdown-list" id="gtCountryList"></div>
+                    </div>
+
+                </div>
+
+                <button class="gt-proceed-btn" id="gtStep1Btn" onclick="goToStep(2)">
+                    Continue — Enter Recipient Details
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+            <!-- STEP 2 — RECIPIENT -->
+            <div class="gt-card" id="gtStep2" style="display:none;">
+
+                <div class="gt-card-header">
+                    <button class="gt-back-sm" onclick="goToStep(1)">←</button>
+                    <div>
+                        <p class="gt-card-title">Recipient Details</p>
+                        <p class="gt-card-sub" id="gtStep2Sub">Sending to —</p>
+                    </div>
+                    <span class="gt-step2-flag" id="gtStep2Flag">🌍</span>
+                </div>
+
+                <!-- SUMMARY STRIP -->
+                <div class="gt-summary-strip">
+                    <div>
+                        <p class="gt-strip-label">You Send</p>
+                        <p class="gt-strip-val" id="gtSummaryNaira">₦0</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right gt-strip-arrow"></i>
+                    <div style="text-align:right;">
+                        <p class="gt-strip-label">They Receive</p>
+                        <p class="gt-strip-val gt-strip-credit" id="gtSummaryConverted">0.00</p>
+                    </div>
+                </div>
+
+                <!-- FULL NAME -->
+                <div class="gt-input-group">
+                    <label>Recipient Full Name</label>
+                    <input type="text" id="gtRecipientName" placeholder="Enter full name as on bank account">
+                </div>
+
+                <!-- BANK NAME -->
+                <div class="gt-input-group">
+                    <label>Bank Name</label>
+                    <input type="text" id="gtBankName" placeholder="e.g. Chase Bank, Barclays, HDFC...">
+                </div>
+
+                <!-- ACCOUNT TYPE -->
+                <div class="gt-input-group">
+                    <label>Account Details Type</label>
+                    <div class="gt-acct-type-grid">
+                        <button class="gt-acct-btn active" data-type="swift"
+                            onclick="selectAcctType(this)">SWIFT/BIC</button>
+                        <button class="gt-acct-btn" data-type="iban" onclick="selectAcctType(this)">IBAN</button>
+                        <button class="gt-acct-btn" data-type="routing" onclick="selectAcctType(this)">Routing
+                            No.</button>
+                    </div>
+                </div>
+
+                <!-- SWIFT INPUT -->
+                <div class="gt-input-group" id="gtSwiftGroup">
+                    <label>SWIFT / BIC Code</label>
+                    <input type="text" id="gtSwiftCode" placeholder="e.g. CHASUS33" oninput="lookupSwift()"
+                        maxlength="11">
+                    <p class="gt-swift-result" id="gtSwiftResult"></p>
+                    <p class="gt-field-hint">8 or 11 character code found on your bank statement</p>
+                </div>
+
+                <!-- IBAN INPUT -->
+                <div class="gt-input-group" id="gtIbanGroup" style="display:none;">
+                    <label>IBAN Number</label>
+                    <input type="text" id="gtIban" placeholder="e.g. GB29NWBK60161331926819">
+                    <p class="gt-field-hint">International Bank Account Number (up to 34 characters)</p>
+                </div>
+
+                <!-- ROUTING INPUT -->
+                <div class="gt-input-group" id="gtRoutingGroup" style="display:none;">
+                    <label>Routing Number</label>
+                    <input type="text" id="gtRouting" placeholder="9-digit routing number (USA)">
+                    <p class="gt-field-hint">Found at the bottom left of your check</p>
+                </div>
+
+                <!-- ACCOUNT NUMBER -->
+                <div class="gt-input-group">
+                    <label>Account Number</label>
+                    <input type="text" id="gtAcctNumber" placeholder="Enter account number" inputmode="numeric"
+                        autocomplete="off">
+                    <p class="gt-acct-status" id="gtAcctStatus"></p>
+                </div>
+
+                <!-- PURPOSE -->
+                <div class="gt-input-group">
+                    <label>Purpose <span class="gt-optional">(optional)</span></label>
+                    <input type="text" id="gtPurpose" placeholder="e.g. Family support, School fees, Business...">
+                </div>
+
+                <button class="gt-proceed-btn" onclick="goToStep(3)">
+                    Review Transfer
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+            <!-- STEP 3 — REVIEW -->
+            <div class="gt-card" id="gtStep3" style="display:none;">
+
+                <div class="gt-card-header">
+                    <button class="gt-back-sm" onclick="goToStep(2)">←</button>
+                    <p class="gt-card-title">Review Transfer</p>
+                </div>
+
+                <!-- AMOUNT HERO -->
+                <div class="gt-review-hero">
+                    <p class="gt-review-hero-label">Total Debit from Your Account</p>
+                    <p class="gt-review-hero-amount" id="gtReviewTotal">₦0</p>
+                    <p class="gt-review-hero-sub" id="gtReviewSub">—</p>
+                    <div class="gt-review-flags" id="gtReviewFlags">
+                        <span>🇳🇬</span>
+                        <i class="fa-solid fa-arrow-right" style="color:rgba(255,255,255,0.7); font-size:12px;"></i>
+                        <span id="gtReviewDestFlag">🌍</span>
+                        <span class="gt-review-dest-amount" id="gtReviewDestAmount">0.00</span>
+                    </div>
+                </div>
+
+                <!-- REVIEW ROWS -->
+                <div class="gt-review-rows">
+
+                    <div class="gt-review-row">
+                        <span>Recipient</span>
+                        <strong id="reviewRecipient">—</strong>
+                    </div>
+
+                    <div class="gt-review-row">
+                        <span>Bank</span>
+                        <strong id="reviewBank">—</strong>
+                    </div>
+
+                    <div class="gt-review-row">
+                        <span>Account Type</span>
+                        <strong id="reviewAcctType">—</strong>
+                    </div>
+
+                    <div class="gt-review-row">
+                        <span>Account Ref</span>
+                        <strong id="reviewAcctRef">—</strong>
+                    </div>
+
+                    <div class="gt-review-row">
+                        <span>Account No.</span>
+                        <strong id="reviewAcctNo">—</strong>
+                    </div>
+
+                    <div class="gt-review-row">
+                        <span>Exchange Rate</span>
+                        <strong id="reviewRate">—</strong>
+                    </div>
+
+                    <div class="gt-review-row">
+                        <span>Transfer Fee</span>
+                        <strong class="gt-fee-strong" id="reviewFee">—</strong>
+                    </div>
+
+                    <div class="gt-review-row">
+                        <span>Purpose</span>
+                        <strong id="reviewPurpose">—</strong>
+                    </div>
+
+                    <div class="gt-review-row">
+                        <span>Delivery Time</span>
+                        <strong class="gt-delivery-strong">1-3 Business Days</strong>
+                    </div>
+
+                </div>
+
+                <!-- WARNING -->
+                <div class="gt-warning">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <p>Please verify all recipient details carefully. International transfers <strong>cannot be
+                            reversed</strong> once processed.</p>
+                </div>
+
+                <button class="gt-proceed-btn" onclick="confirmTransfer()">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Confirm & Send
+                </button>
+
+                <button class="gt-edit-btn" onclick="goToStep(2)">Edit Details</button>
+
+            </div>
+
+            <!-- STEP 4 — SUCCESS -->
+            <div class="gt-card" id="gtStep4" style="display:none;">
+
+                <div class="gt-success-top">
+                    <div class="gt-success-icon-wrap">
+                        <div class="gt-success-icon">✓</div>
+                        <span class="gt-success-globe">🌍</span>
+                    </div>
+                    <p class="gt-success-title">Transfer Initiated!</p>
+                    <p class="gt-success-sub">Your international transfer has been submitted and is being processed</p>
+                </div>
+
+                <!-- TRACKING -->
+                <div class="gt-tracking">
+                    <p class="gt-tracking-title">Transfer Tracking</p>
+
+                    <div class="gt-track-item done">
+                        <div class="gt-track-dot done-dot">✓</div>
+                        <div>
+                            <p class="gt-track-name">Transfer Submitted</p>
+                            <p class="gt-track-time" id="gtSubmitTime">—</p>
+                        </div>
+                    </div>
+
+                    <div class="gt-track-item pending">
+                        <div class="gt-track-dot pending-dot">⏳</div>
+                        <div>
+                            <p class="gt-track-name">Processing</p>
+                            <p class="gt-track-time">1-2 business days</p>
+                        </div>
+                    </div>
+
+                    <div class="gt-track-item waiting">
+                        <div class="gt-track-dot waiting-dot">○</div>
+                        <div>
+                            <p class="gt-track-name gt-track-waiting" id="gtDeliveredTo">Delivered to recipient</p>
+                            <p class="gt-track-time">Expected: 1-3 business days</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RECEIPT -->
+                <div class="gt-receipt">
+
+                    <div class="gt-receipt-row">
+                        <span>Amount Sent</span>
+                        <strong id="receiptNaira">₦0</strong>
+                    </div>
+
+                    <div class="gt-receipt-row">
+                        <span>Recipient Gets</span>
+                        <strong class="gt-receipt-credit" id="receiptConverted">0.00</strong>
+                    </div>
+
+                    <div class="gt-receipt-row">
+                        <span>Recipient</span>
+                        <strong id="receiptRecipient">—</strong>
+                    </div>
+
+                    <div class="gt-receipt-row">
+                        <span>Reference</span>
+                        <strong class="gt-receipt-ref" id="receiptRef">—</strong>
+                    </div>
+
+                </div>
+
+                <div class="gt-success-actions">
+                    <button class="gt-proceed-btn" onclick="resetTransfer()">
+                        <i class="fa-solid fa-plus"></i>
+                        New Transfer
+                    </button>
+                    <button class="gt-share-btn" onclick="shareReceipt()">
+                        <i class="fa-solid fa-share-nodes"></i>
+                        Share Receipt
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/js/data.js"></script>
+    <script src="/global-transfer-section/global-transfer.js"></script>
+    <script src="/js/theme.js"></script>
+
+</body>
+
+</html>

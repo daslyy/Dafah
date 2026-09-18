@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAFAH | International Money Transfer</title>
+    <link rel="icon" href="/img/favicon.png" sizes="32x32" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/home-page/style.css">
+    <link rel="stylesheet" href="/css/hero.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/globalTransfer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/script.js" defer></script>
+    <script src="/js/globalTransfer.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-logo">
+            <a href="/home-page/index.html"><img src="/img/logo.png" alt="Dafah logo"></a>
+        </div>
+
+        <div class="navCta">
+            <nav class="header-nav">
+                <a href="#" class="nav-item dropdown active">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Personal</span>
+                    <i class="fa-solid fa-chevron-down chevron"></i>
+                </a>
+
+                <!-- Mega menu -->
+                <div class="mega-menu">
+                    <div class="left-menu">
+                        <p class="active" data-target="accounts">Current Accounts
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                        <p data-target="why">Why DAFAH?
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                        <p data-target="savings">Savings & Grow
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                        <p data-target="loans">Loans & Credit
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                        <p data-target="insurance">Insurance & Safety <span class="badge-new">New</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                        <p data-target="support">Help & Support
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                    </div>
+
+                    <div class="right-menu">
+                        <div class="content active" id="accounts">
+                            <h3 class="mega-title">Current accounts</h3>
+                            <p class="mega-subtitle">It all starts with our personal current account</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper red-card"><i class="fa-solid fa-credit-card"></i></div>
+                                    <div class="card-text">
+                                        <h4>Personal account</h4>
+                                        <p>Our award-winning daily account</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper grey-card"><i class="fa-solid fa-users-rectangle"></i></div>
+                                    <div class="card-text">
+                                        <h4>Joint account</h4>
+                                        <p>Manage shared bills and spends together</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper pink-card"><i class="fa-solid fa-child-reaching"></i></div>
+                                    <div class="card-text">
+                                        <h4>Under 16s account</h4>
+                                        <p>Give them money confidence early</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper orange-card"><i class="fa-solid fa-graduation-cap"></i></div>
+                                    <div class="card-text">
+                                        <h4>16-17s account</h4>
+                                        <p>Step into independent financial life</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <span>See all current accounts</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="content" id="why">
+                            <h3 class="mega-title">Why choose DAFAH?</h3>
+                            <p class="mega-subtitle">The smart, transparent and reliable way to bank</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper gold-shield"><i class="fa-solid fa-shield-halved"></i></div>
+                                    <div class="card-text">
+                                        <h4>Safe & Secure</h4>
+                                        <p>FSCS protected and multi-encrypted security</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper green-dollar"><i class="fa-solid fa-circle-dollar-to-slot"></i></div>
+                                    <div class="card-text">
+                                        <h4>Zero Hidden Fees</h4>
+                                        <p>No foreign transaction fees, no surprise costs</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper blue-headset"><i class="fa-solid fa-headset"></i></div>
+                                    <div class="card-text">
+                                        <h4>24/7 Live Support</h4>
+                                        <p>Speak to a real customer support hero anytime</p>
+                                    </div>
+                                </a>
+                                <a href="/globalTransfer.html" class="mega-card">
+                                    <div class="card-icon-wrapper purple-globe"><i class="fa-solid fa-earth-americas"></i></div>
+                                    <div class="card-text">
+                                        <h4>Global Transfers</h4>
+                                        <p>Send money to 50+ countries with low rates</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    <span>Discover why 8+ million customers trust us</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="content" id="savings">
+                            <h3 class="mega-title">Savings & Grow</h3>
+                            <p class="mega-subtitle">Make your hard-earned money work harder for you</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper green-seed"><i class="fa-solid fa-seedling"></i></div>
+                                    <div class="card-text">
+                                        <h4>Easy Access Saver</h4>
+                                        <p>Add and withdraw money instantly whenever you need</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper brown-vault"><i class="fa-solid fa-vault"></i></div>
+                                    <div class="card-text">
+                                        <h4>Fixed Rate Pots</h4>
+                                        <p>Lock in a higher interest rate with fixed periods</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper blue-shuffle"><i class="fa-solid fa-shuffle"></i></div>
+                                    <div class="card-text">
+                                        <h4>Salary Sorter</h4>
+                                        <p>Automatically distribute incoming paychecks</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper gold-gift"><i class="fa-solid fa-gift"></i></div>
+                                    <div class="card-text">
+                                        <h4>Cashback Rewards</h4>
+                                        <p>Earn cashback while shopping at top brands</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-calculator"></i>
+                                    <span>Try our savings interest calculator</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="content" id="loans">
+                            <h3 class="mega-title">Loans & Credit</h3>
+                            <p class="mega-subtitle">Simple, straightforward and flexible options to borrow</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper green-hand"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                                    <div class="card-text">
+                                        <h4>Personal Loans</h4>
+                                        <p>Borrow up to £25k with transparent APRs</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper coral-card"><i class="fa-regular fa-credit-card"></i></div>
+                                    <div class="card-text">
+                                        <h4>Flex Credit Card</h4>
+                                        <p>Spread purchases over 3 months fee-free</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper red-arrow"><i class="fa-solid fa-arrow-down-long"></i></div>
+                                    <div class="card-text">
+                                        <h4>Overdraft Limit</h4>
+                                        <p>Emergency fee buffers for peace of mind</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper teal-gauge"><i class="fa-solid fa-gauge-high"></i></div>
+                                    <div class="card-text">
+                                        <h4>Credit Score Check</h4>
+                                        <p>Track your credit score progress for free in app</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-hand-holding-heart"></i>
+                                    <span>Borrowing check eligibility calculator</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="content" id="insurance">
+                            <h3 class="mega-title">Insurance & Safety</h3>
+                            <p class="mega-subtitle">Ensure peace of mind for the things that matter most</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper blue-phone"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                                    <div class="card-text">
+                                        <h4>Phone Insurance</h4>
+                                        <p>Cover against loss, liquid damage & screen smash</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper orange-plane"><i class="fa-solid fa-plane-departure"></i></div>
+                                    <div class="card-text">
+                                        <h4>Travel Cover</h4>
+                                        <p>Worldwide multi-trip medical & delay cover</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper red-heart"><i class="fa-solid fa-heart-pulse"></i></div>
+                                    <div class="card-text">
+                                        <h4>Life Insurance</h4>
+                                        <p>Simple and swift family cover from £1 a month</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper purple-bag"><i class="fa-solid fa-bag-shopping"></i></div>
+                                    <div class="card-text">
+                                        <h4>Purchase Cover</h4>
+                                        <p>Refund protection on stolen or damaged orders</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-umbrella"></i>
+                                    <span>Explore premium DAFAH insurance plans</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="content" id="support">
+                            <h3 class="mega-title">Help & Support</h3>
+                            <p class="mega-subtitle">Answers, live assistance and digital ticket support</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper yellow-question"><i class="fa-solid fa-circle-question"></i></div>
+                                    <div class="card-text">
+                                        <h4>Help Center FAQs</h4>
+                                        <p>Find instant answers to popular banking topics</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper green-chat"><i class="fa-regular fa-comments"></i></div>
+                                    <div class="card-text">
+                                        <h4>Live Chat Agent</h4>
+                                        <p>Secure 1-on-1 chat in the DAFAH mobile app</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper red-excl"><i class="fa-solid fa-circle-exclamation"></i></div>
+                                    <div class="card-text">
+                                        <h4>Report Lost Card</h4>
+                                        <p>Instantly freeze and replacement order a card</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper blue-book"><i class="fa-solid fa-book-open"></i></div>
+                                    <div class="card-text">
+                                        <h4>Safety Guides</h4>
+                                        <p>Tips to protect your savings from online scams</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-headset"></i>
+                                    <span>Visit our full help & support knowledgebase</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Business</span>
+                </a>
+            </nav>
+            
+            <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Light/Dark Mode">
+                <i class="fa-regular fa-moon"></i>
+            </button>
+
+            <div class="header-cta">
+                <a href="/sign-up/sign.html" class="btn-signup" id="open-signup">Sign up</a>
+            </div>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Dedicated Transfer Panel -->
+    <div id="transfer-detail-wrapper" class="transfer-section fade-in" style="min-height: 70vh;">
+        <div class="transfer-container">
+            
+            <!-- Back Navigation -->
+            <div class="back-btn-container">
+                <a href="/home-page/index.html" class="back-to-grid-btn">
+                    <i class="fa-solid fa-arrow-left"></i> Back to all countries
+                </a>
+            </div>
+            
+            <!-- Main Panel with Details & Calculator -->
+            <div class="transfer-detail-panel">
+                
+                <!-- Left Side: Custom Country Details -->
+                <div class="detail-text-column">
+                    <div class="app-ratings-badge">
+                        <div class="rating-item">
+                            <i class="fa-solid fa-star"></i>
+                            <span><strong>4.8 ★</strong> on App Store</span>
+                        </div>
+                        <div class="rating-item">
+                            <i class="fa-solid fa-star"></i>
+                            <span><strong>4.8 ★</strong> on Google Play</span>
+                        </div>
+                    </div>
+                    
+                    <h1 id="detail-country-heading">SEND MONEY<br>TO ANDORRA</h1>
+                    
+                    <p class="description" id="detail-country-subtext">
+                        Save on your online money transfer to Andorra from Nigeria. Transfer Nigerian Naira to Euro quickly, safely and join over 14.8 million people using Dafah.
+                    </p>
+                    
+                    <a href="#" class="back-to-grid-btn" id="calc-alternative-link" style="font-size: 0.95rem; margin-bottom: 25px; display: inline-block;">
+                        Send money from Andorra to Nigeria instead.
+                    </a>
+                    
+                    <!-- Bullets -->
+                    <div class="features-bullets">
+                        <div class="bullet-item">
+                            <div class="bullet-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                            <div class="bullet-text">
+                                <strong>Low fees</strong>
+                                <span>Fees get cheaper the more you send.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bullet-item">
+                            <div class="bullet-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <div class="bullet-text">
+                                <strong>Lightning fast</strong>
+                                <span>Money typically arrives in seconds.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bullet-item">
+                            <div class="bullet-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="bullet-text">
+                                <strong>Perfectly predictable</strong>
+                                <span>Lock in a guaranteed exchange rate for your transfer.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-row">
+                        <a href="/sign-up/sign.html" class="btn-open-account">Open an account</a>
+                    </div>
+                </div>
+                
+                <!-- Right Side: Money Calculator Widget -->
+                <div class="detail-calc-column">
+                    <div class="calculator-card">
+                        
+                        <!-- Send row with floating header -->
+                        <div class="calc-header-row">
+                            <span class="calc-row-label">You send exactly</span>
+                            <div class="calc-rate-badge" id="calc-top-rate-badge">
+                                <i class="fa-solid fa-lock"></i>
+                                <span id="calc-header-rate-text">1 NGN = 0.000621 EUR</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Sending Amount Box -->
+                        <div class="calculator-row">
+                            <div class="row-left">
+                                <div class="currency-pill" id="source-currency-pill">
+                                    <img src="https://flagcdn.com/w40/ng.png" alt="NG Flag" id="calc-source-flag" class="currency-flag-icon">
+                                    <span id="calc-source-code" class="currency-code-text">NGN</span>
+                                    <i class="fa-solid fa-chevron-down text-gray"></i>
+                                    
+                                    <!-- Custom Search Dropdown Overlay -->
+                                    <div class="custom-dropdown-panel" id="source-dropdown-panel">
+                                        <div class="dropdown-search-wrapper">
+                                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                            <input type="text" placeholder="Type a currency / country" class="dropdown-search-input" id="source-search-input" autocomplete="off">
+                                        </div>
+                                        <div class="dropdown-group-title">Popular currencies</div>
+                                        <div class="dropdown-options-list" id="source-options-list">
+                                            <!-- Dynamically Populated by JS -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-right">
+                                <input type="number" id="calc-send-amount" class="large-amount-input" value="100000" step="1000" min="1000">
+                                <span class="input-caret">&lt;</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Discount alert banner (dynamic) -->
+                        <div class="calc-discount-pill" id="calc-fee-discount-msg" style="display: none;">
+                            <i class="fa-solid fa-tag"></i>
+                            <span>Sending over 25,000 USD equivalent? <a href="#" class="discount-link">We'll discount our fee</a></span>
+                        </div>
+                        
+                        <!-- Recipient gets row header -->
+                        <div class="calc-header-row" style="margin-top: 25px;">
+                            <span class="calc-row-label">Recipient gets</span>
+                        </div>
+                        
+                        <!-- Recipient Amount Box -->
+                        <div class="calculator-row">
+                            <div class="row-left">
+                                <div class="currency-pill" id="target-currency-pill">
+                                    <img src="https://flagcdn.com/w40/ad.png" alt="Country Flag" id="calc-target-flag" class="currency-flag-icon">
+                                    <span id="calc-target-code" class="currency-code-text">EUR</span>
+                                    <i class="fa-solid fa-chevron-down text-gray"></i>
+                                    
+                                    <!-- Custom Search Dropdown Overlay -->
+                                    <div class="custom-dropdown-panel" id="target-dropdown-panel">
+                                        <div class="dropdown-search-wrapper">
+                                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                            <input type="text" placeholder="Type a currency / country" class="dropdown-search-input" id="target-search-input" autocomplete="off">
+                                        </div>
+                                        <div class="dropdown-group-title">Popular currencies</div>
+                                        <div class="dropdown-options-list" id="target-options-list">
+                                            <!-- Dynamically Populated by JS -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-right">
+                                <input type="number" id="calc-receive-amount" class="large-amount-input" step="0.01">
+                                <span class="input-caret">&lt;</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Premium Wise Details Rows -->
+                        <div class="calc-details-container">
+                            
+                            <!-- Arrives Row -->
+                            <div class="calc-detail-row">
+                                <div class="circular-icon-container">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </div>
+                                <div class="detail-label-column">
+                                    <span class="detail-small-label">Arrives</span>
+                                    <span class="detail-bold-value" id="calc-arrives-time">Today - in seconds</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Total Fees Row -->
+                            <div class="calc-detail-row">
+                                <div class="circular-icon-container">
+                                    <i class="fa-solid fa-receipt"></i>
+                                </div>
+                                <div class="detail-label-column">
+                                    <span class="detail-small-label">Total fees</span>
+                                    <span class="detail-bold-value" id="calc-fees-description">Included in NGN amount</span>
+                                </div>
+                                <a href="#" class="calc-fees-value-link" id="calc-total-fee">₦6,415.60 <i class="fa-solid fa-chevron-right"></i></a>
+                            </div>
+                            
+                            <!-- Hidden Convert Amount details for mathematical consistency -->
+                            <div style="display: none;">
+                                <span id="calc-convert-amount">₦0.00</span>
+                                <span id="calc-exchange-rate">1 NGN = 0.00062 EUR</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Send CTA -->
+                        <div class="calc-action-row" style="margin-top: 30px;">
+                            <button type="button" class="btn-send-money-calc" onclick="window.location.href='sign-up/sign.html'">Send money</button>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Steps Section below the main green panel -->
+            <div class="transfer-steps-panel">
+                <h2 id="steps-country-heading">HOW TO SEND MONEY TO ANDORRA FROM NIGERIA</h2>
+                
+                <div class="steps-grid">
+                    
+                    <!-- Step 1 -->
+                    <div class="step-card">
+                        <div class="illustration-box">
+                            <div class="ill-amount-card">
+                                <div class="ill-line bright"></div>
+                                <div class="ill-line small"></div>
+                                <div class="ill-badge"></div>
+                                <div class="ill-arrow-spin">
+                                    <i class="fa-solid fa-rotate"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="step-title">Enter amount</h3>
+                        <p class="step-desc">Specify how much you want to send. Choose the currencies and view exactly what fees and rates apply instantly.</p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="step-card">
+                        <div class="illustration-box">
+                            <div class="ill-avatar-row">
+                                <div class="ill-circle-avatar">LN</div>
+                                <div class="ill-circle-avatar"><i class="fa-regular fa-user"></i></div>
+                                <div class="ill-circle-avatar">JJ</div>
+                            </div>
+                        </div>
+                        <h3 class="step-title">Choose recipient</h3>
+                        <p class="step-desc">Enter their bank details or email address. Dafah routes the transfer through local networks safely.</p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="step-card">
+                        <div class="illustration-box">
+                            <div class="ill-track-bg">
+                                <div class="ill-node start"><i class="fa-solid fa-paper-plane"></i></div>
+                                <div class="ill-track-progress"></div>
+                                <div class="ill-node end"><i class="fa-solid fa-check"></i></div>
+                            </div>
+                        </div>
+                        <h3 class="step-title">Send money</h3>
+                        <p class="step-desc">Pay safely via bank transfer or credit card. Recipient gets cash directly in their bank account in seconds.</p>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="first">
+                <div class="footer-column">
+                    <h3>Personal</h3>
+                    <ul>
+                        <li>Savings Account</li>
+                        <li>Current Accounts</li>
+                        <li>Compare Accounts</li>
+                        <li>Cards</li>
+                        <li>Loans & Credit</li>
+                        <li>Ways To Bank</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Business</h3>
+                    <ul>
+                        <li>Business Banking</li>
+                        <li>Business Cards</li>
+                        <li>SME Services</li>
+                        <li>Merchant Tools</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li>Our Company</li>
+                        <li>Careers</li>
+                        <li>Sustainability</li>
+                        <li>Contact Us</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help & Security</h3>
+                    <ul>
+                        <li>Help Center</li>
+                        <li>Security Centre</li>
+                        <li>Complaints & Support</li>
+                        <li>Report Fraud</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li>Find a Branch/ATM</li>
+                        <li>Financial Calculators</li>
+                        <li>Open an Account</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contacts">
+                <h3>Get in Touch</h3>
+                <ul>
+                    <li><i class="fa-solid fa-phone"></i> Support: +234 201 448 0000</li>
+                    <li><i class="fa-solid fa-envelope"></i> Email: support@dafah.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> HQ: Lagos, Nigeria</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <div class="bottom">
+        <div class="bottom-container">
+            <p>© 2026 Dafah Bank Limited. All Rights Reserved.</p>
+            <ul>
+                <p>Terms & Conditions</p>
+                <p>Privacy Policy</p>
+                <p>Sitemap</p>
+                <li><i class="fa-brands fa-facebook-f"></i></li>
+                <li><i class="fa-brands fa-twitter"></i></li>
+                <li><i class="fa-brands fa-instagram"></i></li>
+                <li><i class="fa-brands fa-linkedin-in"></i></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

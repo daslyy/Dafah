@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile Top-up | DAFAH Bank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/img/favicon.png" sizes="32x32" type="image/png">
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+    <link rel="stylesheet" href="/mobile-topup/style.css">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <img src="/img/logo.png" alt="DAFAH Bank">
+            </div>
+
+            <div>
+                <h2>DAFAH Bank</h2>
+                <p>Nigerian Digital Bank</p>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="/dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+
+            <a href="/dashboard.html#transfers">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                Transfers
+            </a>
+
+            <a href="/transaction-history-section/transaction.html">
+                <i class="fa-solid fa-receipt"></i>
+                Transactions
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Analytics
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-credit-card"></i>
+                Cards
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+            <a href="/customer-service/customer.html" class="nav-item">
+                <i class="fa-solid fa-headset"></i>
+                Customer Service
+            </a>
+
+            <a href="/loan-section/loan.html">
+                <i class="fas fa-hand-holding-usd"></i>
+                Loan
+            </a>
+
+        </nav>
+
+
+    </aside>
+
+
+    <div class="main-content">
+
+        <div class="topup-page">
+
+            <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+            <header class="topup-header">
+
+                <div class="header-left">
+
+                    <button class="back-btn" onclick="goBack()">
+
+                        ← Back
+
+                    </button>
+
+                    <div>
+                        <p class="page-label">Payments</p>
+
+                        <h1>Mobile Top-up</h1>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+            <main class="topup-container">
+
+                <!-- =================================================
+             TABS
+        ================================================== -->
+
+                <div class="topup-tabs">
+
+                    <button class="topup-tab active" data-tab="topup" onclick="switchTab('topup')">
+
+                        Mobile Top-up
+
+                    </button>
+
+                    <button class="topup-tab" data-tab="data" onclick="switchTab('data')">
+
+                        Data Bundles
+
+                    </button>
+
+                    <button class="topup-tab" data-tab="history" onclick="switchTab('history')">
+
+                        History
+
+                    </button>
+
+                </div>
+
+
+                <!-- =================================================
+             TOP-UP TAB
+        ================================================== -->
+
+                <section id="topupTab" class="tab-content active">
+
+                    <div class="topup-grid">
+
+
+                        <!-- =========================================
+                     LEFT CARD
+                ========================================== -->
+
+                        <div class="topup-card">
+
+                            <!-- SOURCE ACCOUNT -->
+
+                            <div class="form-section">
+
+                                <label>
+                                    Source Account
+                                </label>
+
+                                <div class="account-selector" onclick="toggleAccountDropdown()">
+
+                                    <div class="account-info">
+
+                                        <div class="account-icon">
+                                            ₦
+                                        </div>
+
+                                        <div>
+
+                                            <span id="accountName">
+                                                Premier Savings
+                                            </span>
+
+                                            <strong id="accountBalance">
+                                                ₦0.00
+                                            </strong>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span class="dropdown-arrow" id="accountArrow">
+                                        ▼
+                                    </span>
+
+                                </div>
+
+
+                                <!-- ACCOUNT DROPDOWN -->
+
+                                <div class="account-dropdown" id="accountDropdown">
+
+                                    <div class="account-option" onclick="selectAccount()">
+
+                                        <div class="account-info">
+
+                                            <div class="account-icon">
+                                                ₦
+                                            </div>
+
+                                            <div>
+
+                                                <span>
+                                                    Premier Savings
+                                                </span>
+
+                                                <strong id="dropdownBalance">
+                                                    ₦0.00
+                                                </strong>
+
+                                            </div>
+
+                                        </div>
+
+                                        <span class="check">
+                                            ✓
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DAILY LIMIT -->
+
+                            <div class="limit-section">
+
+                                <div class="limit-header">
+
+                                    <span>
+                                        Daily Transaction Limit
+                                    </span>
+
+                                    <strong>
+                                        ₦150,000.00
+                                    </strong>
+
+                                </div>
+
+                                <div class="limit-bar">
+
+                                    <div class="limit-progress" id="limitProgress">
+                                    </div>
+
+                                </div>
+
+                                <div class="limit-footer">
+
+                                    <span id="usedAmount">
+                                        ₦0.00 used
+                                    </span>
+
+                                    <span>
+                                        ₦150,000.00 available
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- NETWORK -->
+
+                            <div class="form-section">
+
+                                <label>
+                                    Select network provider
+                                </label>
+
+
+                                <div class="network-grid">
+
+
+                                    <!-- MTN -->
+
+                                    <button class="network-card" data-network="MTN" onclick="selectNetwork(this)">
+
+                                        <img src="/img/image.png" alt="MTN">
+
+                                        <span>
+                                            MTN
+                                        </span>
+
+                                    </button>
+
+
+                                    <!-- AIRTEL -->
+
+                                    <button class="network-card" data-network="Airtel" onclick="selectNetwork(this)">
+
+                                        <img src="/img/airtel.png" alt="Airtel">
+
+                                        <span>
+                                            Airtel
+                                        </span>
+
+                                    </button>
+
+
+                                    <!-- GLO -->
+
+                                    <button class="network-card" data-network="Glo" onclick="selectNetwork(this)">
+
+                                        <img src="/img/glo.png" alt="Glo">
+
+                                        <span>
+                                            Glo
+                                        </span>
+
+                                    </button>
+
+
+                                    <!-- 9MOBILE -->
+
+                                    <button class="network-card" data-network="9mobile" onclick="selectNetwork(this)">
+
+                                        <img src="/img/9mobile.png" alt="9mobile">
+
+                                        <span>
+                                            9mobile
+                                        </span>
+
+                                    </button>
+
+                                </div>
+
+                                <p class="field-message" id="networkMessage">
+                                </p>
+
+                            </div>
+
+
+                            <!-- =========================================
+     MOBILE NUMBER
+========================================== -->
+
+                            <div class="form-section">
+
+                                <label>
+                                    Mobile number
+                                </label>
+
+
+                                <!-- RECIPIENT SELECTOR -->
+
+                                <div class="recipient-selector" id="dataRecipientSelector"
+                                    onclick="toggleDataRecipient()">
+
+                                    <span id="selectedDataRecipient" class="dropdown-placeholder">
+                                        Who are you sending airtime to?
+                                    </span>
+
+                                    <span class="dropdown-arrow">
+                                        ▼
+                                    </span>
+
+                                </div>
+
+
+                                <!-- RECIPIENT OPTIONS -->
+
+                                <div class="recipient-options" id="dataRecipientOptions">
+
+                                    <button type="button" class="recipient-option" data-recipient="self"
+                                        onclick="selectDataRecipient('self')">
+
+                                        <span>
+                                            <strong>Myself</strong>
+                                            <small>Buy airtime for your own number</small>
+                                        </span>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                    </button>
+
+
+                                    <button type="button" class="recipient-option" data-recipient="other"
+                                        onclick="selectDataRecipient('other')">
+
+                                        <span>
+                                            <strong>Someone else</strong>
+                                            <small>Send airtime to another number</small>
+                                        </span>
+
+                                        <i class="fa-solid fa-user-group"></i>
+
+                                    </button>
+
+                                </div>
+
+
+                                <!-- PHONE INPUT -->
+
+                                <div class="data-phone-wrapper" id="dataPhoneWrapper">
+
+                                    <input type="tel" id="dataPhoneNumber" class="form-input" placeholder="08012345678"
+                                        maxlength="11" inputmode="numeric" oninput="validateDataPhone()">
+
+                                    <p class="field-message" id="dataPhoneMessage">
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- AMOUNT -->
+
+                            <div class="form-section">
+
+                                <label>
+                                    Amount
+                                </label>
+
+                                <div class="amount-input">
+
+                                    <span>₦</span>
+
+                                    <input type="number" id="topupAmount" placeholder="Enter amount" min="100"
+                                        max="150000" oninput="updateAmount()">
+
+                                </div>
+
+                                <p class="amount-words" id="amountWords">
+                                </p>
+
+                            </div>
+
+
+                            <!-- QUICK AMOUNTS -->
+
+                            <div class="quick-amounts">
+
+                                <button onclick="setAmount(500)">
+                                    ₦500
+                                </button>
+
+                                <button onclick="setAmount(1000)">
+                                    ₦1,000
+                                </button>
+
+                                <button onclick="setAmount(2000)">
+                                    ₦2,000
+                                </button>
+
+                                <button onclick="setAmount(5000)">
+                                    ₦5,000
+                                </button>
+
+                            </div>
+
+
+                            <!-- PROCEED -->
+
+                            <button class="proceed-btn" onclick="proceedTopup()">
+
+                                <span>Proceed</span>
+
+                                <span>→</span>
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- =========================================
+                     RIGHT INFORMATION CARD
+                ========================================== -->
+
+                        <aside class="info-card">
+
+                            <div class="info-icon">
+                                i
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Mobile top-up made simple
+                                </h3>
+
+                                <p>
+                                    Recharge any Nigerian mobile line
+                                    directly from your DAFAH Bank account.
+                                    Select a network, enter the mobile
+                                    number and choose your preferred
+                                    amount.
+                                </p>
+
+                                <div class="info-divider"></div>
+
+                                <div class="info-item">
+
+                                    <span>✓</span>
+
+                                    <p>
+                                        Instant airtime delivery
+                                    </p>
+
+                                </div>
+
+                                <div class="info-item">
+
+                                    <span>✓</span>
+
+                                    <p>
+                                        Secure account verification
+                                    </p>
+
+                                </div>
+
+                                <div class="info-item">
+
+                                    <span>✓</span>
+
+                                    <p>
+                                        Available 24/7
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+     DATA BUNDLES TAB
+================================================== -->
+
+                <section id="dataTab" class="tab-content">
+
+                    <div class="topup-grid">
+
+                        <!-- =========================================
+             LEFT CARD — DATA BUNDLES
+        ========================================== -->
+
+                        <div class="topup-card">
+
+                            <!-- SOURCE ACCOUNT -->
+
+                            <div class="form-section">
+
+                                <label>
+                                    Source Account
+                                </label>
+
+                                <div class="account-selector" onclick="toggleAccountDropdown()">
+
+                                    <div class="account-info">
+
+                                        <div class="account-icon">
+                                            ₦
+                                        </div>
+
+                                        <div>
+
+                                            <span>
+                                                Premier Savings
+                                            </span>
+
+                                            <strong id="dataAccountBalance">
+                                                ₦0.00
+                                            </strong>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span class="dropdown-arrow">
+                                        ▼
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DAILY TRANSACTION LIMIT -->
+
+                            <div class="limit-section">
+
+                                <div class="limit-header">
+
+                                    <span>
+                                        Daily Transaction Limit
+                                    </span>
+
+                                    <strong>
+                                        ₦150,000.00
+                                    </strong>
+
+                                </div>
+
+                                <div class="limit-bar">
+
+                                    <div class="limit-progress" id="dataLimitProgress">
+                                    </div>
+
+                                </div>
+
+                                <div class="limit-footer">
+
+                                    <span id="dataUsedAmount">
+                                        ₦0.00 used
+                                    </span>
+
+                                    <span>
+                                        ₦150,000.00 available
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- NETWORK -->
+
+                            <div class="form-section">
+
+                                <label>
+                                    Select network provider
+                                </label>
+
+                                <div class="network-grid">
+
+                                    <!-- MTN -->
+
+                                    <button type="button" class="network-card data-network-card" data-network="MTN"
+                                        onclick="selectDataNetwork(this)">
+
+                                        <img src="/img/image.png" alt="MTN">
+
+                                        <span>
+                                            MTN
+                                        </span>
+
+                                    </button>
+
+
+                                    <!-- AIRTEL -->
+
+                                    <button type="button" class="network-card data-network-card" data-network="Airtel"
+                                        onclick="selectDataNetwork(this)">
+
+                                        <img src="/img/airtel.png" alt="Airtel">
+
+                                        <span>
+                                            Airtel
+                                        </span>
+
+                                    </button>
+
+
+                                    <!-- GLO -->
+
+                                    <button type="button" class="network-card data-network-card" data-network="Glo"
+                                        onclick="selectDataNetwork(this)">
+
+                                        <img src="/img/glo.png" alt="Glo">
+
+                                        <span>
+                                            Glo
+                                        </span>
+
+                                    </button>
+
+
+                                    <!-- 9MOBILE -->
+
+                                    <button type="button" class="network-card data-network-card" data-network="9mobile"
+                                        onclick="selectDataNetwork(this)">
+
+                                        <img src="/img/9mobile.png" alt="9mobile">
+
+                                        <span>
+                                            9mobile
+                                        </span>
+
+                                    </button>
+
+                                </div>
+
+                                <p class="field-message" id="dataNetworkMessage">
+                                </p>
+
+                            </div>
+
+
+                            <!-- PRODUCT DROPDOWN -->
+
+                            <div class="form-section">
+
+                                <label>
+                                    Product
+                                </label>
+
+                                <div class="data-dropdown" id="dataProductDropdown" onclick="toggleDataProducts()">
+
+                                    <span id="selectedDataProduct" class="dropdown-placeholder">
+
+                                        Select data bundle
+
+                                    </span>
+
+                                    <span class="dropdown-arrow">
+                                        ▼
+                                    </span>
+
+                                </div>
+
+
+                                <!-- DATA PRODUCTS -->
+
+                                <div class="data-product-list" id="dataProductList">
+
+                                    <!-- 1GB -->
+                                    <button type="button" class="data-product" onclick="selectDataProduct(this)"
+                                        data-price="500" data-plan="1GB — 1 Day">
+
+                                        <span>
+                                            1GB
+                                        </span>
+
+                                        <strong>
+                                            ₦500
+                                        </strong>
+
+                                        <small>
+                                            1 Day
+                                        </small>
+
+                                    </button>
+
+
+                                    <!-- 2GB -->
+                                    <button type="button" class="data-product" onclick="selectDataProduct(this)"
+                                        data-price="1000" data-plan="2GB — 2 Days">
+
+                                        <span>
+                                            2GB
+                                        </span>
+
+                                        <strong>
+                                            ₦1,000
+                                        </strong>
+
+                                        <small>
+                                            2 Days
+                                        </small>
+
+                                    </button>
+
+
+                                    <!-- 5GB -->
+                                    <button type="button" class="data-product" onclick="selectDataProduct(this)"
+                                        data-price="2000" data-plan="5GB — 7 Days">
+
+                                        <span>
+                                            5GB
+                                        </span>
+
+                                        <strong>
+                                            ₦2,000
+                                        </strong>
+
+                                        <small>
+                                            7 Days
+                                        </small>
+
+                                    </button>
+
+
+                                    <!-- 10GB -->
+                                    <button type="button" class="data-product" onclick="selectDataProduct(this)"
+                                        data-price="3500" data-plan="10GB — 14 Days">
+
+                                        <span>
+                                            10GB
+                                        </span>
+
+                                        <strong>
+                                            ₦3,500
+                                        </strong>
+
+                                        <small>
+                                            14 Days
+                                        </small>
+
+                                    </button>
+
+
+                                    <!-- 15GB -->
+                                    <button type="button" class="data-product" onclick="selectDataProduct(this)"
+                                        data-price="5000" data-plan="15GB — 30 Days">
+
+                                        <span>
+                                            15GB
+                                        </span>
+
+                                        <strong>
+                                            ₦5,000
+                                        </strong>
+
+                                        <small>
+                                            30 Days
+                                        </small>
+
+                                    </button>
+
+
+                                    <!-- 20GB -->
+                                    <button type="button" class="data-product" onclick="selectDataProduct(this)"
+                                        data-price="6000" data-plan="20GB — 30 Days">
+
+                                        <span>
+                                            20GB
+                                        </span>
+
+                                        <strong>
+                                            ₦6,000
+                                        </strong>
+
+                                        <small>
+                                            30 Days
+                                        </small>
+
+                                    </button>
+
+
+                                    <!-- 25GB -->
+                                    <button type="button" class="data-product" onclick="selectDataProduct(this)"
+                                        data-price="7500" data-plan="25GB — 30 Days">
+
+                                        <span>
+                                            25GB
+                                        </span>
+
+                                        <strong>
+                                            ₦7,500
+                                        </strong>
+
+                                        <small>
+                                            30 Days
+                                        </small>
+
+                                    </button>
+
+
+                                    <!-- 40GB -->
+                                    <button type="button" class="data-product" onclick="selectDataProduct(this)"
+                                        data-price="10000" data-plan="40GB — 30 Days">
+
+                                        <span>
+                                            40GB
+                                        </span>
+
+                                        <strong>
+                                            ₦10,000
+                                        </strong>
+
+                                        <small>
+                                            30 Days
+                                        </small>
+
+                                    </button>
+
+
+                                </div>
+
+                                <p class="field-message" id="dataProductMessage">
+                                </p>
+
+                            </div>
+
+
+                            <!-- MOBILE NUMBER -->
+
+                            <!-- =========================================
+     DATA RECIPIENT
+========================================== -->
+
+                            <div class="form-section">
+
+                                <label>
+                                    Mobile number
+                                </label>
+
+                                <!-- RECIPIENT SELECTOR -->
+
+                                <div class="recipient-selector" id="bundleRecipientSelector"
+                                    onclick="toggleBundleRecipient()">
+
+                                    <span id="selectedBundleRecipient" class="dropdown-placeholder">
+                                        Who are you sending data to?
+                                    </span>
+
+                                    <span class="dropdown-arrow">
+                                        ▼
+                                    </span>
+
+                                </div>
+
+
+                                <!-- RECIPIENT OPTIONS -->
+
+                                <div class="recipient-options" id="bundleRecipientOptions">
+
+                                    <button type="button" class="recipient-option" data-recipient="self"
+                                        onclick="selectBundleRecipient('self')">
+
+                                        <span>
+
+                                            <strong>
+                                                Myself
+                                            </strong>
+
+                                            <small>
+                                                Buy data for your own number
+                                            </small>
+
+                                        </span>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                    </button>
+
+
+                                    <button type="button" class="recipient-option" data-recipient="other"
+                                        onclick="selectBundleRecipient('other')">
+
+                                        <span>
+
+                                            <strong>
+                                                Someone else
+                                            </strong>
+
+                                            <small>
+                                                Send data to another number
+                                            </small>
+
+                                        </span>
+
+                                        <i class="fa-solid fa-user-group"></i>
+
+                                    </button>
+
+                                </div>
+
+
+                                <!-- PHONE INPUT -->
+
+                                <div class="data-phone-wrapper" id="bundlePhoneWrapper">
+
+                                    <input type="tel" id="bundlePhoneNumber" class="form-input"
+                                        placeholder="08012345678" maxlength="11" inputmode="numeric"
+                                        oninput="validateBundlePhone()">
+
+                                    <p class="field-message" id="bundlePhoneMessage">
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PROCEED -->
+
+                            <button class="proceed-btn" type="button" onclick="proceedDataPurchase()">
+
+                                <span>
+                                    Proceed
+                                </span>
+
+                                <span>
+                                    →
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- =========================================
+             RIGHT INFORMATION CARD
+        ========================================== -->
+
+                        <aside class="info-card">
+
+                            <div class="info-icon">
+                                i
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Data bundles made simple
+                                </h3>
+
+                                <p>
+                                    Choose your preferred network,
+                                    select a data bundle and recharge
+                                    any Nigerian mobile number directly
+                                    from your DAFAH Bank account.
+                                </p>
+
+                                <div class="info-divider"></div>
+
+                                <div class="info-item">
+
+                                    <span>✓</span>
+
+                                    <p>
+                                        Flexible data bundles
+                                    </p>
+
+                                </div>
+
+                                <div class="info-item">
+
+                                    <span>✓</span>
+
+                                    <p>
+                                        Secure account verification
+                                    </p>
+
+                                </div>
+
+                                <div class="info-item">
+
+                                    <span>✓</span>
+
+                                    <p>
+                                        Available 24/7
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+             HISTORY TAB
+        ================================================== -->
+
+                <section id="historyTab" class="tab-content">
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+                            ↔
+                        </div>
+
+                        <h2>
+                            Top-up History
+                        </h2>
+
+                        <p>
+                            Your mobile top-up transactions
+                            will appear here.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+
+        <!-- =====================================================
+     CONFIRMATION MODAL
+====================================================== -->
+
+        <div class="modal-overlay" id="confirmationModal">
+
+            <div class="confirmation-modal">
+
+                <button class="close-modal" onclick="closeModal()">
+
+                    ×
+
+                </button>
+
+                <div class="modal-success-icon">
+                    ✓
+                </div>
+
+                <h2>
+                    Confirm Mobile Top-up
+                </h2>
+
+                <p class="modal-subtitle">
+                    Please review your transaction before
+                    proceeding.
+                </p>
+
+
+                <div class="confirmation-details">
+
+                    <div>
+                        <span>Network</span>
+                        <strong id="confirmNetwork">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Mobile Number</span>
+                        <strong id="confirmPhone">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Amount</span>
+                        <strong id="confirmAmount">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Source Account</span>
+                        <strong>
+                            Premier Savings
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button class="cancel-btn" onclick="closeModal()">
+
+                        Cancel
+
+                    </button>
+
+                    <button class="confirm-btn" onclick="confirmTopup()">
+
+                        Confirm Top-up
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+     MOBILE TOP-UP TRANSACTION PIN SHEET
+===================================================== -->
+        <!-- =====================================================
+ MOBILE TOP-UP TRANSACTION PIN SHEET
+====================================================== -->
+
+        <div class="mobile-topup-pin-sheet" id="mobileTopupPinSheet">
+
+            <div class="pin-modal">
+
+                <h2>
+                    Enter Transaction PIN
+                </h2>
+
+
+                <!-- PIN DOTS -->
+
+                <div class="pin-dots" id="mobileTopupPinDots">
+
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+
+                </div>
+
+
+                <!-- PIN PAD -->
+
+                <div class="pin-pad" id="mobileTopupPinPad">
+
+                    <button type="button" class="pin-key" data-pin="1">
+                        1
+                    </button>
+
+                    <button type="button" class="pin-key" data-pin="2">
+                        2
+                    </button>
+
+                    <button type="button" class="pin-key" data-pin="3">
+                        3
+                    </button>
+
+
+                    <button type="button" class="pin-key" data-pin="4">
+                        4
+                    </button>
+
+                    <button type="button" class="pin-key" data-pin="5">
+                        5
+                    </button>
+
+                    <button type="button" class="pin-key" data-pin="6">
+                        6
+                    </button>
+
+
+                    <button type="button" class="pin-key" data-pin="7">
+                        7
+                    </button>
+
+                    <button type="button" class="pin-key" data-pin="8">
+                        8
+                    </button>
+
+                    <button type="button" class="pin-key" data-pin="9">
+                        9
+                    </button>
+
+
+                    <button type="button" class="pin-key empty">
+                    </button>
+
+                    <button type="button" class="pin-key" data-pin="0">
+                        0
+                    </button>
+
+                    <button type="button" class="pin-key delete" id="mobileTopupPinDelete">
+                        ⌫
+                    </button>
+
+                </div>
+
+
+                <!-- LOADING -->
+
+                <div class="loading-box" id="mobileTopupPinLoading">
+
+                    <div class="loader"></div>
+
+                    <p id="mobileTopupPinLoadingText">
+                        Processing Mobile Top-up...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOBILE TOP-UP SUCCESS SHEET -->
+        <div class="topup-success-overlay" id="topupSuccessSheet">
+
+            <div class="topup-success-sheet">
+
+                <!-- Close -->
+                <button type="button" class="topup-success-close" onclick="closeTopupSuccess()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <!-- Success Icon -->
+                <div class="topup-success-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <!-- Title -->
+                <h2>Top-up Successful</h2>
+
+                <p class="topup-success-message">
+                    Your mobile top-up has been completed successfully.
+                </p>
+
+                <!-- Amount -->
+                <div class="topup-success-amount">
+                    ₦1,000.00
+                </div>
+
+                <!-- Details -->
+                <div class="topup-success-details">
+
+                    <div class="topup-success-row">
+                        <span>Network</span>
+                        <strong id="successNetwork">MTN</strong>
+                    </div>
+
+                    <div class="topup-success-row">
+                        <span>Mobile Number</span>
+                        <strong id="successPhone">08012345678</strong>
+                    </div>
+
+                    <div class="topup-success-row">
+                        <span>Payment Account</span>
+                        <strong id="successAccount">Premier Savings</strong>
+                    </div>
+
+                    <div class="topup-success-row">
+                        <span>Status</span>
+                        <strong class="success-status">
+                            Successful
+                        </strong>
+                    </div>
+
+                </div>
+
+                <!-- Done -->
+                <button type="button" class="topup-success-done" onclick="closeTopupSuccess()">
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/js/data.js"></script>
+    <script src="/mobile-topup/script.js"></script>
+    <script src="/js/theme.js"></script>
+
+</body>
+
+</html>

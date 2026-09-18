@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beneficiaries — DAFAH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/beneficiaries-section/beneficiaries.css">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+
+<body>
+
+    <div class="ben-page">
+
+        <!-- TOP -->
+        <div class="ben-top">
+            <button class="back-btn" onclick="window.location.href='/dashboard.html'">
+                ← Back
+            </button>
+            <div>
+                <p class="ben-label">Saved Contacts</p>
+                <h1>Beneficiaries</h1>
+            </div>
+            <button class="ben-add-btn" id="benAddBtn">
+                <i class="fa-solid fa-plus"></i>
+                Add New
+            </button>
+        </div>
+
+        <!-- WRAPPER -->
+        <div class="ben-wrapper">
+
+            <!-- LEFT — LIST -->
+            <div class="ben-box" id="benListBox">
+
+                <div class="ben-list-header">
+                    <div>
+                        <p class="ben-box-title">My Beneficiaries</p>
+                        <p class="ben-box-sub">Your saved transfer contacts</p>
+                    </div>
+                    <span class="ben-count" id="benCount">0 saved</span>
+                </div>
+
+                <!-- SEARCH -->
+                <div class="ben-search-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="benSearch" placeholder="Search by name or account...">
+                </div>
+
+                <!-- LIST -->
+                <div class="ben-list" id="benList"></div>
+
+                <!-- EMPTY -->
+                <div class="ben-empty" id="benEmpty">
+                    <div class="ben-empty-icon">👥</div>
+                    <p class="ben-empty-title">No Beneficiaries Yet</p>
+                    <p class="ben-empty-sub">Add your first saved contact for quick transfers</p>
+                    <button class="ben-empty-btn" onclick="showView('add')">
+                        + Add Beneficiary
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- RIGHT — VIEWS -->
+            <div class="ben-right">
+
+                <!-- ADD FORM -->
+                <div class="ben-box" id="viewAdd">
+
+                    <div class="ben-form-header">
+                        <button class="ben-back-sm" onclick="showView('none')">←</button>
+                        <div>
+                            <p class="ben-box-title">Add Beneficiary</p>
+                            <p class="ben-box-sub">Save a new contact</p>
+                        </div>
+                    </div>
+
+                    <!-- ACCOUNT NUMBER -->
+                    <div class="ben-input-group">
+                        <label>Account Number</label>
+                        <input type="numberic" id="benAccount"  placeholder="Enter 10-digit account number" autocomplete="off">
+                        <p class="ben-account-hint" id="benAccountHint"></p>
+                    </div>
+
+                    <!-- NAME — user types it themselves -->
+                    <div class="ben-input-group">
+                        <label>Account Name</label>
+                        <input
+    id="benAccountName"
+    type="text"
+    readonly
+    placeholder="Account name will appear here"
+>
+                        <!-- <input type="text" id="benAccountName" placeholder="Enter account holder name"> -->
+                        <p class="ben-name-result" id="benNameResult"></p>
+                    </div>
+
+                    <!-- BANK -->
+                    <div class="ben-input-group">
+                        <label>Bank</label>
+                        <input type="text" id="benBankSearch" placeholder="Search bank...">
+                        <div class="ben-bank-results" id="benBankResults"></div>
+                    </div>
+
+                    <!-- NICKNAME -->
+                    <div class="ben-input-group">
+                        <label>Nickname <span class="ben-optional">(optional)</span></label>
+                        <input type="text" id="benNickname" placeholder="e.g. My Brother, Landlord, Office...">
+                    </div>
+
+                    <!-- PREVIEW -->
+                    <div class="ben-preview-card" id="benPreviewCard" style="display:none;">
+                        <div class="ben-avatar" id="benPreviewAvatar">??</div>
+                        <div>
+                            <p class="ben-preview-name" id="benPreviewName">—</p>
+                            <p class="ben-preview-info" id="benPreviewInfo">—</p>
+                            <p class="ben-preview-nick" id="benPreviewNick"></p>
+                        </div>
+                        <span class="ben-preview-check">✓</span>
+                    </div>
+
+                    <button class="ben-save-btn" id="benSaveBtn" disabled>
+                        Save Beneficiary
+                    </button>
+                    <p class="ben-save-hint" id="benSaveHint">Enter account number and select bank to continue</p>
+
+                </div>
+
+                <!-- QUICK SEND -->
+                <div class="ben-box" id="viewSend" style="display:none;">
+
+                    <div class="ben-form-header">
+                        <button class="ben-back-sm" onclick="showView('none')">←</button>
+                        <div>
+                            <p class="ben-box-title">Quick Transfer</p>
+                            <p class="ben-box-sub">Send to saved beneficiary</p>
+                        </div>
+                    </div>
+
+                    <!-- BENEFICIARY INFO -->
+                    <div class="ben-selected-card" id="benSelectedCard">
+                        <div class="ben-avatar" id="sendAvatar">??</div>
+                        <div>
+                            <p class="ben-preview-name" id="sendName">—</p>
+                            <p class="ben-preview-info" id="sendInfo">—</p>
+                            <p class="ben-preview-nick" id="sendNick"></p>
+                        </div>
+                    </div>
+
+                    <!-- AMOUNT -->
+                    <div class="ben-input-group">
+                        <label>Amount</label>
+                        <div class="ben-amount-wrap">
+                            <span class="ben-naira">₦</span>
+                            <input type="number" id="sendAmount" placeholder="0.00">
+                        </div>
+                        <p class="ben-amount-words" id="sendAmountWords"></p>
+                    </div>
+
+                    <!-- DESCRIPTION -->
+                    <div class="ben-input-group">
+                        <label>Description <span class="ben-optional">(optional)</span></label>
+                        <input type="text" id="sendDescription" placeholder="e.g. for food, rent...">
+                    </div>
+
+                    <!-- FEE WARNING -->
+                    <div class="ben-fee-warn" id="benFeeWarn">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <p>Transfer fee: <strong>₦10</strong> will be charged</p>
+                    </div>
+
+                    <button class="ben-send-btn" id="benSendBtn">
+                        Send Money
+                    </button>
+
+                    <!-- LOADING -->
+                    <div class="ben-loading" id="benLoading" style="display:none;">
+                        <div class="ben-loader"></div>
+                        <p>Processing transfer...</p>
+                    </div>
+
+                    <!-- SUCCESS -->
+                    <div class="ben-success" id="benSuccess" style="display:none;">
+                        <div class="ben-success-icon">✓</div>
+                        <p class="ben-success-title">Transfer Successful!</p>
+                        <p class="ben-success-sub" id="benSuccessSub">—</p>
+                        <button class="ben-done-btn" onclick="showView('none')">Done</button>
+                    </div>
+
+                </div>
+
+                <!-- DEFAULT STATE -->
+                <div class="ben-default" id="viewDefault">
+                    <div class="ben-default-icon">👆</div>
+                    <p class="ben-default-title">Select a beneficiary</p>
+                    <p class="ben-default-sub">Click Send on any contact to transfer, or add a new one</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/js/data.js"></script>
+    <script src="/beneficiaries-section/beneficiaries.js"></script>
+    <script src="/js/theme.js"></script>
+
+</body>
+
+</html>

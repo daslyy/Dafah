@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DAFAH Transfer</title>
+    <!-- <link rel="stylesheet" href="/css/dashboard.css"> -->
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/transfer.css">
+</head>
+
+<body>
+
+
+    <div class="transfer-page">
+
+
+        <!-- TOP -->
+        <div class="transfer-top">
+
+            <button class="back-btn" onclick="window.location.href='/dashboard.html'">
+                ← Back
+            </button>
+
+            <h1>Other Bank Transfer</h1>
+
+        </div>
+
+
+
+        <!-- TRANSFER BOX -->
+        <div class="transfer-wrapper">
+
+
+            <!-- LEFT -->
+            <div class="transfer-form-box">
+
+
+                <!-- SOURCE ACCOUNT -->
+                <div class="input-group">
+
+                    <label>Source Account</label>
+
+
+                    <select id="sourceAccount">
+                        <option id="sourceAccountOption">
+                            Premier Savings
+                        </option>
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- BANK SEARCH -->
+                <div class="input-group">
+
+                    <label>Select Bank</label>
+
+                    <input type="text" id="bankSearch" placeholder="Search bank..." autocomplete="off">
+
+                    <div class="bank-results" id="bankResults">
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ACCOUNT NUMBER -->
+                <div class="input-group">
+
+                    <label>Account Number</label>
+
+                    <input type="number" id="accountNumber" placeholder="0123456789">
+                    <p id="accountNumberHint" class="transfer-account-hint">
+                    </p>
+
+                </div>
+
+
+
+                <!-- ACCOUNT NAME -->
+                <div class="input-group">
+
+                    <label>Receiver Name</label>
+
+                    <input type="text" id="receiverName" placeholder="Receiver name" readonly>
+
+                </div>
+
+
+
+                <!-- AMOUNT -->
+                <div class="input-group">
+
+                    <label>Amount</label>
+
+                    <input type="text" id="amount" placeholder="₦0">
+                </div>
+
+
+
+                <!-- NARRATION -->
+                <div class="input-group">
+
+                    <label>Narration</label>
+
+                    <input type="text" id="narration" placeholder="Transfer narration">
+
+                </div>
+
+
+
+                <button class="proceed-btn" id="proceedBtn">
+                    Proceed
+                </button>
+
+
+            </div>
+
+
+
+            <!-- RIGHT -->
+            <div class="transfer-info">
+
+                <h3>Transfer Tips</h3>
+
+                <p>
+                    Ensure the account number is correct before proceeding.
+                </p>
+
+                <p>
+                    Transfers may take a few seconds to reflect.
+                </p>
+
+                <p>
+                    DAFAH Bank keeps your transactions secure.
+                </p>
+
+            </div>
+
+
+        </div>
+
+        <!-- <button class="back-btn" onclick="goBack()">
+            ← Back
+        </button>
+    </div> -->
+
+
+
+
+        <!-- REVIEW MODAL -->
+        <div class="modal-overlay" id="reviewModal">
+
+            <div class="review-modal">
+
+                <button class="close-modal" id="closeReview">
+                    ✕
+                </button>
+
+                <h2>Review Transfer</h2>
+
+
+                <div class="review-top">
+
+                    <div>
+                        <small>From</small>
+                        <h3>1474158794</h3>
+                        <p>DAFAH SAVINGS</p>
+                    </div>
+
+
+                    <div class="review-amount">
+
+                        <h1 id="reviewAmount">
+                            ₦0
+                        </h1>
+
+                    </div>
+
+
+                    <div>
+                        <small>To</small>
+                        <h3 id="reviewAccount">
+                            0123456789
+                        </h3>
+
+                        <p id="reviewName">
+                            Receiver Name
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+                <div class="review-box">
+
+                    <div class="review-row">
+                        <span>Bank</span>
+                        <strong id="reviewBank">
+                            Kuda Bank
+                        </strong>
+                    </div>
+
+                    <div class="review-row">
+                        <span>Narration</span>
+                        <strong id="reviewNarration">
+                            Transfer
+                        </strong>
+                    </div>
+
+                    <div class="review-row">
+                        <span>Transfer Fee</span>
+                        <strong>
+                            ₦10
+                        </strong>
+                    </div>
+
+                    <div class="review-row">
+                        <span>Total Debit</span>
+                        <strong id="reviewDebit">
+                            ₦0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+
+                <button class="continue-btn" id="continueBtn">
+                    Continue
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- PIN MODAL -->
+        <div class="modal-overlay" id="pinModal">
+
+            <div class="pin-modal">
+
+
+                <button class="close-modal" id="closePin">
+                    ✕
+                </button>
+
+
+                <h2>Enter Transaction PIN</h2>
+
+
+                <div class="pin-dots">
+
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+
+                </div>
+
+
+
+                <div class="pin-pad">
+
+                    <button class="pin-key">1</button>
+                    <button class="pin-key">2</button>
+                    <button class="pin-key">3</button>
+
+                    <button class="pin-key">4</button>
+                    <button class="pin-key">5</button>
+                    <button class="pin-key">6</button>
+
+                    <button class="pin-key">7</button>
+                    <button class="pin-key">8</button>
+                    <button class="pin-key">9</button>
+
+                    <button class="pin-key empty"></button>
+                    <button class="pin-key">0</button>
+                    <button class="pin-key delete">
+                        ⌫
+                    </button>
+
+                </div>
+
+
+                <div class="loading-box" id="loadingBox">
+
+                    <div class="loader"></div>
+
+                    <p>Processing Transfer...</p>
+
+                </div>
+
+
+                <div class="success-box" id="successBox">
+
+                    <div class="success-icon">
+                        ✓
+                    </div>
+
+                    <h3>Transfer Successful</h3>
+
+                    <p>
+                        Your transaction was completed successfully.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="/js/data.js"></script>
+
+        <script src="/js/transfer.js"></script>
+        <script src="/js/theme.js"></script>
+
+</body>
+
+</html>

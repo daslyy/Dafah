@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/scheduled-section/scheduled-transfer.css">
+    <link rel="stylesheet" href="/css/theme.css">
+    <title>Scheduled Transfer — DAFAH</title>
+</head>
+
+<body>
+
+    <div class="scheduled-page">
+
+        <!-- TOP -->
+        <div class="scheduled-top">
+            <button class="back-btn" onclick="window.location.href='/dashboard.html'">
+                ← Back
+            </button>
+            <div>
+                <p class="scheduled-label">Automatic Payments</p>
+                <h1>Scheduled Transfers</h1>
+            </div>
+            <button class="new-schedule-btn" id="newScheduleBtn">
+                <i class="fa-solid fa-plus"></i>
+                New Schedule
+            </button>
+        </div>
+
+
+        <!-- MAIN WRAPPER -->
+        <div class="scheduled-wrapper">
+
+            <!-- LEFT — LIST -->
+            <div class="scheduled-list-box" id="scheduledListBox">
+
+                <div class="scheduled-list-header">
+                    <h3>My Schedules</h3>
+                    <span class="schedule-count" id="scheduleCount">0 active</span>
+                </div>
+
+                <!-- LIST -->
+                <div class="schedule-list" id="scheduleList">
+                    <!-- rendered by JS -->
+                </div>
+
+
+                <!-- EMPTY STATE -->
+                <div class="schedule-empty" id="scheduleEmpty">
+                    <div class="empty-icon">⏰</div>
+                    <p class="empty-title">No Schedules Yet</p>
+                    <p class="empty-sub">Create your first automatic transfer</p>
+                    <button class="empty-create-btn" onclick="showView('form')">
+                        + Create Schedule
+                    </button>
+                </div>
+
+            </div>
+
+
+
+            <!-- RIGHT — FORM / CONFIRM / SUCCESS -->
+            <div class="scheduled-right">
+
+                <!-- FORM -->
+                <div id="viewForm">
+                    <div class="scheduled-form-box">
+
+                        <div class="form-header">
+                            <div>
+                                <p class="form-label">Set Up</p>
+                                <h3>New Scheduled Transfer</h3>
+                            </div>
+                        </div>
+
+
+                        <!-- ACCOUNT NUMBER -->
+                        <div class="sch-input-group">
+                            <label>Recipient Account Number</label>
+                            <input type="number" id="schAccount" placeholder="0123456789">
+                            <p class="sch-receiver-name" id="schReceiverName"></p>
+                        </div>
+
+
+                        <!-- BANK -->
+                        <div class="sch-input-group">
+                            <label>Bank</label>
+                            <input type="text" id="schBankSearch" placeholder="Search bank...">
+                            <div class="sch-bank-results" id="schBankResults"></div>
+                        </div>
+
+
+                        <!-- AMOUNT -->
+                        <div class="sch-input-group">
+                            <label>Amount</label>
+                            <div class="sch-amount-wrap">
+                                <span class="sch-naira">₦</span>
+                                <input type="number" id="schAmount" placeholder="0.00">
+                            </div>
+                            <p class="sch-amount-words" id="schAmountWords"></p>
+                        </div>
+
+
+
+                        <!-- FREQUENCY -->
+                        <div class="sch-input-group">
+                            <label>Frequency</label>
+                            <div class="sch-frequency-grid">
+                                <button class="freq-btn active" data-freq="Daily">Daily</button>
+                                <button class="freq-btn" data-freq="Weekly">Weekly</button>
+                                <button class="freq-btn" data-freq="Monthly">Monthly</button>
+                            </div>
+                        </div>
+
+
+
+                        <!-- START DATE -->
+                        <div class="sch-input-group">
+                            <label>Start Date</label>
+                            <input type="date" id="schStartDate">
+                        </div>
+
+    
+ 
+                        <!-- ADD THIS BELOW IT -->
+                        <div class="sch-input-group">
+                            <label>Transfer Time</label>
+                            <input type="time" id="schTime">
+                            <p style="font-size:11px; color:#9ca3af; margin:5px 0 0;">Transfer runs at this time every
+                                day</p>
+                        </div>
+
+
+                        <!-- DESCRIPTION -->
+                        <div class="sch-input-group">
+                            <label>Description <span class="sch-optional">(optional)</span></label>
+                            <input type="text" id="schDescription" placeholder="e.g. Rent, Savings...">
+                        </div>
+
+                        <button class="sch-proceed-btn" id="schProceedBtn">
+                            Review Schedule
+                        </button>
+
+                    </div>
+                </div>
+
+
+                <!-- CONFIRM -->
+                <div id="viewConfirm" style="display:none;">
+                    <div class="scheduled-form-box">
+
+                        <div class="form-header">
+                            <button class="sch-back-btn" onclick="showView('form')">←</button>
+                            <h3>Review Schedule</h3>
+                        </div>
+
+
+
+                        <!-- SUMMARY -->
+                        <div class="sch-summary-card">
+                            <p class="sch-summary-label">Transfer Amount</p>
+                            <h2 class="sch-summary-amount" id="confirmAmount">₦0</h2>
+                            <p class="sch-summary-sub" id="confirmSub">Every month • Starting —</p>
+                        </div>
+
+
+                        <!-- DETAILS -->
+                        <div class="sch-review-box">
+                            <div class="sch-review-row">
+                                <span>To</span>
+                                <strong id="confirmName">—</strong>
+                            </div>
+                            <div class="sch-review-row">
+                                <span>Bank</span>
+                                <strong id="confirmBank">—</strong>
+                            </div>
+                            <div class="sch-review-row">
+                                <span>Frequency</span>
+                                <strong id="confirmFreq" style="color:#16a34a;">—</strong>
+                            </div>
+
+                            <div class="sch-review-row">
+                                <span>Start Date</span>
+                                <strong id="confirmDate">—</strong>
+                            </div>
+                            <div class="sch-review-row">
+                                <span>Description</span>
+                                <strong id="confirmDesc">—</strong>
+                            </div>
+                        </div>
+
+                        <!-- WARNING -->
+                        <div class="sch-warning">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <p id="confirmWarning">Amount will be automatically debited from your account. Ensure you
+                                have sufficient balance.</p>
+                        </div>
+
+                        <button class="sch-proceed-btn" id="schConfirmBtn">
+                            Confirm Schedule
+                        </button>
+
+                        <button class="sch-edit-btn" onclick="showView('form')">
+                            Edit
+                        </button>
+
+                    </div>
+                </div>
+
+
+                <!-- SUCCESS -->
+                <div id="viewSuccess" style="display:none;">
+                    <div class="scheduled-form-box success-box-wrap">
+
+                        <div class="sch-success-icon">✓</div>
+                        <h3 class="sch-success-title">Schedule Created!</h3>
+                        <p class="sch-success-sub" id="successSub">Your transfer has been scheduled</p>
+
+                        <div class="sch-next-box">
+                            <div>
+                                <p class="sch-next-label">Next Transfer</p>
+                                <p class="sch-next-date" id="successNextDate">—</p>
+                            </div>
+
+
+                            <div style="text-align:right;">
+                                <p class="sch-next-label">Amount</p>
+                                <p class="sch-next-amount" id="successAmount">—</p>
+                            </div>
+                        </div>
+
+                        <button class="sch-proceed-btn" onclick="showView('form'); resetForm();">
+                            Create Another
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/js/data.js"></script>
+    <script src="/scheduled-section/scheduled-transfer.js"></script>
+    <script src="/js/theme.js"></script>
+
+
+</body>
+
+</html>

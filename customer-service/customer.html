@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service — DAFAH Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/customer-service/customer.css">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+
+<body>
+
+
+<div class="cs-page">
+
+    
+    <aside class="sidebar cs-sidebar">
+
+        <div class="logo logo-stacked cs-logo">
+            <div>
+                <img src="/img/logo.png" alt="DAFAH Bank">
+                <p>Nigerian Digital Bank</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="/dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Dashboard 
+            </a>
+            <a href="/transfer.html">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                Transfers
+            </a>
+            <a href="/transaction-history-section/transaction.html">
+                <i class="fa-solid fa-receipt"></i>
+                Transactions
+            </a>
+            <a href="/analytics.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Analytics
+            </a>
+                <a href="/dashboard.html#cheques-cards">
+                <i class="fa-solid fa-credit-card"></i>
+                Cards
+            </a>
+            <a href="/customer-service/customer.html" class="active">
+                <i class="fa-solid fa-headset"></i>
+                Customer Service
+            </a>
+            <a href="/profile.html">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+            <a href="/loan-section/loan.html">
+                     <i class="fas fa-hand-holding-usd"></i>
+                    Loan
+                </a>
+        </nav>
+
+    </aside>
+
+    
+         <!-- MAIN CONTENT -->
+
+    <main class="cs-main">
+
+        
+             <!-- CHAT HEADER -->
+        
+        <div class="cs-header">
+
+            <div class="cs-header-left">
+                <!-- AI Avatar -->
+                <div class="cs-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                    <span class="cs-online-dot"></span>
+                </div>
+                <div class="cs-header-info">
+                    <h2>Dafah AI Assistant</h2>
+                    <div class="cs-status">
+                        <span class="cs-status-dot"></span>
+                        Online — Ready to help
+                    </div>
+                </div>
+            </div>
+
+            <div class="cs-header-right">
+                <!-- 24/7 Badge -->
+                <div class="cs-badge">
+                    <i class="fa-solid fa-clock"></i>
+                    24/7 Support
+                </div>
+                <!-- Back button -->
+                <a href="/dashboard.html" class="cs-back-btn">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Dashboard
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ══════════════════════════════════════
+             CHAT WINDOW
+        ══════════════════════════════════════ -->
+        <div class="cs-chat-window" id="chatWindow">
+
+            <!-- Welcome message rendered by JS -->
+
+        </div>
+
+        <!-- ══════════════════════════════════════
+             QUICK ACTION BUTTONS
+        ══════════════════════════════════════ -->
+        <div class="cs-quick-actions" id="quickActions">
+
+            <p class="cs-quick-label">Quick Actions</p>
+
+            <div class="cs-quick-grid">
+
+                <button class="cs-quick-btn" onclick="sendQuick('What is my balance?')">
+                    <i class="fa-solid fa-wallet"></i>
+                    Check Balance
+                </button>
+
+                <button class="cs-quick-btn" onclick="sendQuick('What is my account number?')">
+                    <i class="fa-solid fa-hashtag"></i>
+                    Account Number
+                </button>
+
+                <button class="cs-quick-btn" onclick="sendQuick('Tell me about Dafah Bank')">
+                    <i class="fa-solid fa-building-columns"></i>
+                    About Dafah
+                </button>
+
+                <button class="cs-quick-btn" onclick="sendQuick('Tell me about Dafah Loan')">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    Dafah Loan
+                </button>
+
+                <button class="cs-quick-btn" onclick="sendQuick('Show my transaction history')">
+                    <i class="fa-solid fa-receipt"></i>
+                    Transactions
+                </button>
+
+                <button class="cs-quick-btn" onclick="sendQuick('Generate my statement')">
+                    <i class="fa-solid fa-file-export"></i>
+                    Statement
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- ══════════════════════════════════════
+             MESSAGE INPUT AREA
+        ══════════════════════════════════════ -->
+        <div class="cs-input-area">
+
+            <div class="cs-input-wrap">
+
+                <input
+                    type="text"
+                    id="messageInput"
+                    class="cs-input"
+                    placeholder="Type your message here..."
+                    autocomplete="off"
+                    onkeydown="handleEnter(event)"
+                >
+
+                <button class="cs-send-btn" id="sendBtn" onclick="sendMessage()">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+
+            </div>
+
+            <p class="cs-input-hint">
+                <i class="fa-solid fa-shield-halved"></i>
+                Your conversation is secure and encrypted
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+     
+
+<script src="/js/data.js"></script>
+<script src="/customer-service/customer.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+</html>

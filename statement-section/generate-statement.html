@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Statement — DAFAH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/statement-section/generate-statement.css">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+
+<body>
+
+<div class="statement-page">
+
+    <!-- TOP -->
+    <div class="statement-top">
+        <button class="back-btn" onclick="window.location.href='/dashboard.html'">
+            ← Back
+        </button>
+        <div>
+            <p class="statement-label">Export Your History</p>
+            <h1>Generate Statement</h1>
+        </div>
+    </div>
+
+    <!-- WRAPPER -->
+    <div class="statement-wrapper">
+
+        <!-- LEFT — FILTER -->
+        <div class="statement-box" id="viewFilter">
+
+            <p class="statement-box-title">Filter Options</p>
+            <p class="statement-box-sub">Choose your date range and format</p>
+
+            <!-- QUICK SELECT -->
+            <div class="st-input-group">
+                <label>Quick Select</label>
+                <div class="st-quick-grid">
+                    <button class="st-quick-btn active" data-quick="this-month">This Month</button>
+                    <button class="st-quick-btn" data-quick="last-month">Last Month</button>
+                    <button class="st-quick-btn" data-quick="3-months">Last 3 Months</button>
+                    <button class="st-quick-btn" data-quick="custom">Custom Range</button>
+                </div>
+            </div>
+
+            <!-- DATE RANGE -->
+            <div class="st-date-grid">
+                <div class="st-input-group">
+                    <label>From</label>
+                    <input type="date" id="stFromDate">
+                </div>
+                <div class="st-input-group">
+                    <label>To</label>
+                    <input type="date" id="stToDate">
+                </div>
+            </div>
+
+            <!-- TYPE -->
+            <div class="st-input-group">
+                <label>Transaction Type</label>
+                <div class="st-type-grid">
+                    <button class="st-type-btn active" data-type="all">All</button>
+                    <button class="st-type-btn" data-type="credit">Credit</button>
+                    <button class="st-type-btn" data-type="debit">Debit</button>
+                </div>
+            </div>
+
+            <!-- FORMAT -->
+            <div class="st-input-group">
+                <label>Export Format</label>
+                <div class="st-format-grid">
+                    <button class="st-format-btn active" data-format="pdf">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        PDF
+                    </button>
+                    <button class="st-format-btn" data-format="csv">
+                        <i class="fa-solid fa-file-csv"></i>
+                        CSV
+                    </button>
+                </div>
+            </div>
+
+            <button class="st-proceed-btn" id="stPreviewBtn">
+                <i class="fa-solid fa-eye"></i>
+                Preview Statement
+            </button>
+
+        </div>
+
+        <!-- RIGHT — PREVIEW -->
+        <div class="statement-box" id="viewPreview" style="display:none;">
+
+            <div class="st-preview-header">
+                <div>
+                    <p class="statement-box-title">Statement Preview</p>
+                    <p class="statement-box-sub" id="previewPeriodLabel">—</p>
+                </div>
+                <button class="st-back-sm" onclick="showView('filter')">← Edit</button>
+            </div>
+
+            <!-- SUMMARY -->
+            <div class="st-summary-grid">
+                <div class="st-summary-box credit-box">
+                    <p class="st-summary-label">Total Credit</p>
+                    <p class="st-summary-val" id="previewTotalCredit">₦0</p>
+                </div>
+                <div class="st-summary-box debit-box">
+                    <p class="st-summary-label">Total Debit</p>
+                    <p class="st-summary-val" id="previewTotalDebit">₦0</p>
+                </div>
+                <div class="st-summary-box neutral-box">
+                    <p class="st-summary-label">Transactions</p>
+                    <p class="st-summary-val" id="previewCount">0</p>
+                </div>
+            </div>
+
+            <!-- TABLE -->
+            <div class="st-table-wrap">
+                <table class="st-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Narration</th>
+                            <th>Type</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="previewTableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CLOSING BALANCE -->
+            <div class="st-closing-balance">
+                <p>Closing Balance</p>
+                <p id="previewClosingBalance">₦0</p>
+            </div>
+
+            <button class="st-proceed-btn" id="stDownloadBtn">
+                <i class="fa-solid fa-download"></i>
+                Download Statement
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/js/data.js"></script>
+<script src="/statement-section/generate-statement.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+</html>

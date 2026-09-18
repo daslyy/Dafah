@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAFAH Bank</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo logo-stacked">
+
+                <div>
+                     <img src="/img/logo.png"  alt="DAFAH Bank">
+                    <p>Nigerian Digital Bank</p>
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="#" class="active">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+
+                <a href="/transfer.html">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+                    Transfers
+                </a>
+
+                <a href="/transaction-history-section/transaction.html">
+                    <i class="fa-solid fa-receipt"></i>
+                    Transactions
+                </a>
+
+                <a href="/analytics.html">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Analytics
+                </a>
+
+                <a href="/dashboard.html#cheques-cards" title="Manage your cards and cheques">
+                    <i class="fa-solid fa-credit-card"></i>
+                    Cards
+                </a>
+
+                <a href="/profile.html">
+                    <i class="fa-solid fa-gears"></i> Settings
+                </a>
+
+                <a href="/customer-service/customer.html" class="nav-item">
+                    <i class="fa-solid fa-headset"></i>
+                    Customer Service
+                </a>
+
+                <a href="/loan-section/loan.html">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    Loan
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="top-left">
+
+                    <p class="welcome-text" id="greetingText">
+                        Good Morning,
+                    </p>
+
+                    <h1 id="userName">
+                        Emmanuel 👋
+                    </h1>
+
+                </div>
+
+
+                <div class="top-right">
+
+                    <div class="search-wrapper">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input type="text" placeholder="Search anything..." class="search-box">
+
+                    </div>
+
+                    <button type="button" id="theme-toggle-btn" class="theme-toggle-btn"
+                        aria-label="Enable dark mode" aria-pressed="false" title="Toggle light and dark mode">
+                        <i class="fa-regular fa-moon"></i>
+                    </button>
+
+
+                    <button type="button" class="notification-btn" id="notification-btn"
+                        aria-label="Open notifications" aria-expanded="false">
+
+                        <i class="fa-regular fa-bell"></i>
+
+                        <span class="notify-dot"></span>
+
+                    </button>
+
+
+                    <a href="/profile.html" class="profile" id="topProfileInitials"
+                        aria-label="Open profile">
+                        GP
+                    </a>
+
+                </div>
+
+            </header>
+
+            <section class="notification-panel" id="notification-panel" aria-label="Notifications" hidden>
+                <div class="notification-panel-header">
+                    <div>
+                        <p class="notification-eyebrow">Updates</p>
+                        <h2>Notifications</h2>
+                    </div>
+                    <button type="button" class="mark-read-btn" id="mark-notifications-read">Mark all read</button>
+                </div>
+                <div class="notification-list">
+                    <article class="notification-item">
+                        <span class="notification-item-icon"><i class="fa-solid fa-hand-wave"></i></span>
+                        <div>
+                            <h3>Welcome to your demo account</h3>
+                            <p>Explore transfers, receipts and transaction history.</p>
+                            <time>Just now</time>
+                        </div>
+                    </article>
+                    <article class="notification-item">
+                        <span class="notification-item-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                        <div>
+                            <h3>Security tip</h3>
+                            <p>This presentation uses demonstration data only.</p>
+                            <time>Today</time>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+
+            <!-- HERO DASHBOARD -->
+            <section class="hero-dashboard">
+
+                <!-- BALANCE CARD -->
+
+                <div class="balance-card">
+
+                    <div class="balance-header">
+
+                        <div>
+
+                            <div class="balance-label">
+
+                                <span>Total Balance</span>
+
+                                <i class="fa-regular fa-eye"></i>
+
+                            </div>
+
+                            <h1 id="mainBalance">₦12,450,000.50</h1>
+
+                            <small id="availableBalance">Available Balance</small>
+
+                            <!-- <p>₦12,450,000.50</p> -->
+
+                        </div>
+
+
+                        <div class="balance-eye">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CHART -->
+                    <div class="chart-wrap">
+
+                        <canvas id="sparkline"></canvas>
+
+                    </div>
+
+
+                    <!-- BUTTONS -->
+                    <div class="balance-actions">
+
+                        <div class="add-money-wrapper">
+                            <button class="money-btn white-btn" id="addMoneyBtn">
+                                <i class="fa-solid fa-plus"></i>
+                                Add Money
+                            </button>
+                            <!-- DROPDOWN -->
+                            <div class="add-money-dropdown" id="addMoneyDropdown">
+
+                                <!-- STEP 1 — FORM -->
+                                <div id="depositStep1">
+
+                                    <div class="deposit-dropdown-header">
+                                        <div>
+                                            <p class="dropdown-title">Add Money</p>
+                                            <p class="dropdown-subtitle">Deposit into your account</p>
+                                        </div>
+                                        <button class="deposit-close-btn" id="depositCloseBtn">✕</button>
+                                    </div>
+
+                                    <!-- DROPDOWN
+                            <div class="add-money-dropdown" id="addMoneyDropdown">
+
+                                <p class="dropdown-title">Add Money</p> -->
+
+                                    <div class="deposit-input-group">
+                                        <label>Amount</label>
+                                        <div class="deposit-input-wrap">
+                                            <span class="naira-sign">₦</span>
+                                            <input type="number" id="depositAmount" placeholder="0.00">
+                                        </div>
+                                        <p class="deposit-amount-words" id="depositAmountWords"></p>
+                                    </div>
+
+                                    <div class="deposit-input-group">
+                                        <label>Description <span class="optional">(optional)</span></label>
+                                        <input type="text" id="depositDescription" class="deposit-text-input"
+                                            placeholder="e.g. salary, savings...">
+                                    </div>
+                                    <div class="deposit-account-info">
+                                        <div class="deposit-avatar" id="depositAvatar">ED</div>
+                                        <div>
+                                            <p class="deposit-account-name" id="depositAccountName">Emmanuel Daniel</p>
+                                            <p class="deposit-account-number" id="depositAccountNumber">0123456789 •
+                                                DAFAH Bank</p>
+                                        </div>
+                                    </div>
+
+                                    <button class="deposit-confirm-btn" id="depositConfirmBtn">
+                                        Confirm Deposit
+                                    </button>
+
+                                </div>
+
+                                <!-- STEP 2 — LOADING -->
+                                <div id="depositStep2" style="display:none;">
+                                    <div class="deposit-loading-box">
+                                        <div class="deposit-loader"></div>
+                                        <p class="deposit-loading-title">Processing...</p>
+                                        <p class="deposit-loading-sub" id="depositLoadingText">Adding to your account
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <!-- STEP 3 — SUCCESS -->
+                                <div id="depositStep3" style="display:none;">
+
+                                    <div class="deposit-success-icon">✓</div>
+                                    <p class="deposit-success-title">Deposit Successful!</p>
+                                    <p class="deposit-success-sub">Your account has been credited</p>
+
+                                    <div class="deposit-receipt">
+
+                                        <div class="deposit-receipt-row">
+                                            <span>Amount</span>
+                                            <span class="receipt-amount" id="receiptAmount">+₦0</span>
+                                        </div>
+
+
+
+                                        <div class="deposit-receipt-row">
+                                            <span>Description</span>
+                                            <span id="receiptDescription">—</span>
+                                        </div>
+
+                                        <div class="deposit-receipt-row">
+                                            <span>Account</span>
+                                            <span id="receiptAccount">0123456789</span>
+                                        </div>
+
+                                        <div class="deposit-receipt-row">
+                                            <span>Time</span>
+                                            <span id="receiptTime">—</span>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="deposit-new-balance">
+                                        <p class="deposit-new-balance-label">New Balance</p>
+                                        <p class="deposit-new-balance-amount" id="receiptNewBalance">₦0</p>
+                                    </div>
+
+                                    <button class="deposit-confirm-btn" id="depositDoneBtn">Done</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <button class="money-btn dark-btn">
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                            Transfer
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <!-- QUICK TRANSFER -->
+                <div class="hero-box quick-transfer-box">
+
+                    <div class="quick-header">
+
+                        <h3>Quick Transfer</h3>
+
+                        <a href="/beneficiaries-section/beneficiaries.html">See All</a>
+
+                    </div>
+
+
+                    <div class="quick-users">
+
+                        <div class="quick-user">
+
+                            <div class="avatar green-avatar">
+                                DJ
+                            </div>
+
+                            <h4>David</h4>
+
+                            <p>₦3,500</p>
+
+                        </div>
+
+
+                        <div class="quick-user">
+
+                            <div class="avatar pink-avatar">
+                                SA
+                            </div>
+
+                            <h4>Sarah</h4>
+
+                            <p>₦2,000</p>
+
+                        </div>
+
+
+                        <div class="quick-user">
+
+                            <div class="avatar blue-avatar">
+                                JO
+                            </div>
+
+                            <h4>John</h4>
+
+                            <p>₦5,000</p>
+
+                        </div>
+
+
+                        <div class="quick-user">
+
+                            <div class="avatar add-avatar">
+
+                                <i class="fa-solid fa-plus"></i>
+
+                            </div>
+
+                            <h4>More</h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD -->
+                <div class="hero-boxs">
+
+                    <div class="quick-header">
+                        <h3>Recent Card</h3>
+                    </div>
+
+                    <div class="dafah-card">
+
+                        <div class="card-top">
+                            <div class="bank-brand">
+                                <i class="fa-regular fa-credit-card"></i>
+                                <span>DAFAH</span>
+                            </div>
+
+                            <h2 class="visa-text">VISA</h2>
+                        </div>
+
+                        <div class="card-middle">
+                            <div class="card-chip"></div>
+                            <p class="card-number" id="cardNumber">
+                                Loading...
+                            </p>
+                            <!-- <p class="card-number">
+                                •••• •••• •••• 4587
+                            </p> -->
+                        </div>
+
+                        <div class="card-bottom">
+                            <div>
+                                <small>Card Holder</small>
+                                <h4 id="cardHolderName">Card Holder</h4>
+                                <!-- <h4>Emmanuel Daniel</h4> -->
+                            </div>
+
+                            <div>
+                                <small>Exp</small>
+                                <h4>09/30</h4>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+
+            <!-- CHART + TRANSACTIONS SIDE BY SIDE -->
+            <section class="bottom-section">
+
+                <div class="activity-section">
+                    <div class="chart-card">
+
+                        <div class="section-head">
+                            <div>
+                                <p class="section-sub">Weekly Overview</p>
+                                <h2>Weekly Activity</h2>
+                            </div>
+                            <div class="activity-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color deposit-color"></span>
+                                    Deposit
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color withdraw-color"></span>
+                                    Withdraw
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WHITE CARD — only canvas inside -->
+
+                        <canvas id="weeklyChart"></canvas>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT: TRANSACTIONS -->
+                <div class="recent-section">
+                    <div class="section-title">
+                        <div>
+                            <p>Recent Activity</p>
+                            <h2>Transactions</h2>
+                        </div>
+                        <a href="/transaction-history-section/transaction.html">View All</a>
+                    </div>
+                    <div class="transactions-list" id="transactionsList"></div>
+                </div>
+
+            </section>
+            <!-- bottom-section ends -->
+
+            <section class="service-area">
+
+                <!-- Tabs -->
+                <div class="service-tabs">
+
+                    <button class="tab-btn active" data-tab="account">
+                        Account
+                    </button>
+
+                    <button class="tab-btn" data-tab="transfers">
+                        Transfers
+                    </button>
+
+                    <button class="tab-btn" data-tab="bill-payments">
+                        Bill Payments
+                    </button>
+
+                    <button class="tab-btn" data-tab="lifestyle">
+                        Lifestyle
+                    </button>
+
+                    <button class="tab-btn" data-tab="cheques-cards">
+                        Cheques & Cards
+                    </button>
+
+                </div>
+
+                <!-- ACCOUNT CARDS -->
+                <div class="service-content active" id="account">
+
+                    <div class="service-card"
+                        onclick="location.href='/transaction-history-section/transaction.html'">
+                        <div class="card-icon">₦</div>
+                        <h3>Transaction History</h3>
+                    </div>
+
+                    <div class="service-card"
+                        onclick="location.href='/statement-section/generate-statement.html'">
+                        <div class="card-icon">📄</div>
+                        <h3>Generate Statement</h3>
+                    </div>
+
+                    <div class="service-card"
+                        onclick="location.href='/beneficiaries-section/beneficiaries.html'">
+                        <div class="card-icon">👤</div>
+                        <h3>Beneficiaries</h3>
+                    </div>
+
+                </div>
+
+
+                <!-- TRANSFER CARDS -->
+                <div class="service-content" id="transfers">
+
+                    <div class="service-card" onclick="location.href='/dafah-transfer.html'">
+                        <div class="card-icon">⇄</div>
+                        <h3>DAFAH Transfer</h3>
+                    </div>
+
+                    <a href="/transfer.html" class="service-card">
+                        <div class="card-icon">🏦</div>
+                        <h3>Other Bank Transfer</h3>
+                    </a>
+
+                    <div class="service-card"
+                        onclick="location.href='/global-transfer-section/global-transfer.html'">
+                        <div class="card-icon">🌍</div>
+                        <h3>Global Transfer</h3>
+                    </div>
+
+                    <div class="service-card"
+                        onclick="location.href='/scheduled-section/scheduled-transfer.html'">
+                        <div class="card-icon">⏰</div>
+                        <h3>Scheduled Transfer</h3>
+                    </div>
+
+                </div>
+
+                <!-- BILL PAYMENTS CARDS -->
+                <div class="service-content" id="bill-payments">
+
+                    <a class="service-card service-card-premium bill-service-card" href="/mobile-topup/index.html">
+                        <div class="card-icon card-icon-mobile">
+                            <i class="fa-solid fa-mobile"></i>
+                        </div>
+                        <h3>Mobile Topup</h3>
+                        <p class="card-description">Recharge your phone instantly</p>
+                        <span class="bill-card-link">Top up now <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <a class="service-card service-card-premium bill-service-card" href="/mobile-topup/index.html#data">
+                        <div class="card-icon card-icon-data">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <h3>Data Purchase</h3>
+                        <p class="card-description">Buy data bundles</p>
+                        <span class="bill-card-link">Buy data <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <div class="service-card service-card-premium bill-service-card" onclick="openBillPayment('utility')" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') openBillPayment('utility')">
+                        <div class="card-icon card-icon-utility">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3>Utility Bills</h3>
+                        <p class="card-description">Pay electricity & water</p>
+                        <span class="bill-card-link">Pay bill <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <div class="service-card service-card-premium bill-service-card bill-coming-soon">
+                        <div class="card-icon card-icon-cable">
+                            <i class="fa-solid fa-tv"></i>
+                        </div>
+                        <h3>Cable TV</h3>
+                        <p class="card-description">Renew subscription</p>
+                        <span class="bill-coming-label">Coming soon</span>
+                    </div>
+
+                    <div class="service-card service-card-premium bill-service-card" onclick="openBillPayment('sportybet')" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') openBillPayment('sportybet')">
+                        <div class="card-icon card-icon-wallet">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <h3>Sports Wallet</h3>
+                        <p class="card-description">Fund your gaming account</p>
+                        <span class="bill-card-link">Fund wallet <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                </div>
+
+                <!-- LIFESTYLE CARDS -->
+                <div class="service-content" id="lifestyle">
+
+                    <div class="service-card service-card-lifestyle" onclick="openLifestyleBooking('flight')" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') openLifestyleBooking('flight')">
+                        <div class="card-icon card-icon-flight">
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                        <h3>Book Flight</h3>
+                        <p class="card-description">Find & book flights worldwide</p>
+                        <div class="card-footer">
+                            <span class="card-badge">✈ Travel</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card service-card-lifestyle" onclick="openLifestyleBooking('event')" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') openLifestyleBooking('event')">
+                        <div class="card-icon card-icon-event">
+                            <i class="fa-solid fa-ticket"></i>
+                        </div>
+                        <h3>Event Ticket</h3>
+                        <p class="card-description">Buy concert & event tickets</p>
+                        <div class="card-footer">
+                            <span class="card-badge">🎫 Events</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- CHEQUES & CARDS -->
+                <div class="service-content" id="cheques-cards">
+
+                    <div class="service-card service-card-cheques-full" onclick="openCardManagement()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') openCardManagement()">
+                        <div class="cheques-card-header">
+                            <div class="cheques-card-icon">
+                                <i class="fa-solid fa-credit-card"></i>
+                            </div>
+                            <h3>Manage Cards</h3>
+                        </div>
+                        <p class="cheques-card-desc">Create, freeze & manage your debit cards</p>
+                        <div class="cheques-features">
+                            <div class="feature-item">
+                                <i class="fa-solid fa-shield"></i> Secure
+                            </div>
+                            <div class="feature-item">
+                                <i class="fa-solid fa-lock"></i> Control
+                            </div>
+                            <div class="feature-item">
+                                <i class="fa-solid fa-mobile"></i> Mobile
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card service-card-cheques-full" onclick="openChequeServices()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') openChequeServices()">
+                        <div class="cheques-card-header">
+                            <div class="cheques-card-icon cheques-card-icon-cheque">
+                                <i class="fa-solid fa-receipt"></i>
+                            </div>
+                            <h3>Cheque Services</h3>
+                        </div>
+                        <p class="cheques-card-desc">Request cheque book & manage cheques</p>
+                        <div class="cheques-features">
+                            <div class="feature-item">
+                                <i class="fa-solid fa-book"></i> Cheque Book
+                            </div>
+                            <div class="feature-item">
+                                <i class="fa-solid fa-check"></i> Status
+                            </div>
+                            <div class="feature-item">
+                                <i class="fa-solid fa-history"></i> History
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- LIFESTYLE BOOKING MODAL -->
+            <div class="lifestyle-modal-overlay" id="lifestyleModal" hidden>
+                <div class="lifestyle-modal" role="dialog" aria-modal="true" aria-labelledby="lifestyleModalTitle">
+                    <button type="button" class="lifestyle-modal-close" onclick="closeLifestyleBooking()" aria-label="Close">&times;</button>
+                    <div class="lifestyle-modal-icon" id="lifestyleModalIcon"><i class="fa-solid fa-plane"></i></div>
+                    <p class="lifestyle-modal-eyebrow">DAFAH Lifestyle</p>
+                    <h2 id="lifestyleModalTitle">Book a flight</h2>
+                    <p class="lifestyle-modal-subtitle" id="lifestyleModalSubtitle">Enter your booking details to continue.</p>
+
+                    <form id="lifestyleBookingForm" class="lifestyle-booking-form">
+                        <div class="lifestyle-form-grid">
+                            <label>
+                                <span id="lifestyleDestinationLabel">Destination</span>
+                                <input type="text" id="lifestyleDestination" placeholder="e.g. London" required>
+                            </label>
+                            <label>
+                                <span>Date</span>
+                                <input type="date" id="lifestyleDate" required>
+                            </label>
+                        </div>
+                        <div class="lifestyle-form-grid">
+                            <label>
+                                <span id="lifestyleQuantityLabel">Passengers</span>
+                                <input type="number" id="lifestyleQuantity" min="1" value="1" required>
+                            </label>
+                            <label>
+                                <span>Amount (₦)</span>
+                                <input type="number" id="lifestyleAmount" min="100" step="100" placeholder="0" required>
+                            </label>
+                        </div>
+                        <p class="lifestyle-balance-line">Available balance: <strong id="lifestyleAvailableBalance">₦0</strong></p>
+                        <p class="lifestyle-form-error" id="lifestyleFormError" role="alert"></p>
+                        <button type="submit" class="lifestyle-pay-btn" id="lifestylePayBtn">Pay and book</button>
+                    </form>
+                    <div class="lifestyle-success" id="lifestyleSuccess" hidden>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <h3 id="lifestyleSuccessTitle">Booking confirmed</h3>
+                        <p id="lifestyleSuccessMessage"></p>
+                        <button type="button" class="lifestyle-pay-btn" onclick="closeLifestyleBooking()">Done</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lifestyle-modal-overlay" id="cardModal" hidden>
+                <div class="lifestyle-modal management-modal" role="dialog" aria-modal="true" aria-labelledby="cardModalTitle">
+                    <button type="button" class="lifestyle-modal-close" onclick="closeCardManagement()" aria-label="Close">&times;</button>
+                    <div class="lifestyle-modal-icon card-management-icon"><i class="fa-solid fa-credit-card"></i></div>
+                    <p class="lifestyle-modal-eyebrow">Card controls</p>
+                    <h2 id="cardModalTitle">Manage your DAFAH card</h2>
+                    <p class="lifestyle-modal-subtitle">View card details and control card usage securely.</p>
+                    <div class="card-preview-modal">
+                        <div class="card-preview-top"><span>DAFAH</span><strong>VISA</strong></div>
+                        <p class="card-preview-number" id="managedCardNumber">•••• •••• •••• ••••</p>
+                        <div class="card-preview-bottom"><span id="managedCardName">CARD HOLDER</span><span>09/30</span></div>
+                    </div>
+                    <div class="card-detail-list">
+                        <div><span>Card number</span><strong id="managedCardNumberText">•••• •••• •••• ••••</strong><button type="button" onclick="toggleManagedCardNumber()" id="cardNumberToggle">Show</button></div>
+                        <div><span>CVV</span><strong id="managedCardCvv">•••</strong><button type="button" onclick="toggleManagedCvv()" id="cardCvvToggle">Show</button></div>
+                    </div>
+                    <button type="button" class="card-freeze-btn" id="cardFreezeBtn" onclick="toggleManagedCardFreeze()"><i class="fa-solid fa-snowflake"></i> Freeze card</button>
+                    <p class="card-status-line" id="managedCardStatus"><i class="fa-solid fa-circle-check"></i> Card is active</p>
+                </div>
+            </div>
+
+            <div class="lifestyle-modal-overlay" id="chequeModal" hidden>
+                <div class="lifestyle-modal management-modal" role="dialog" aria-modal="true" aria-labelledby="chequeModalTitle">
+                    <button type="button" class="lifestyle-modal-close" onclick="closeChequeServices()" aria-label="Close">&times;</button>
+                    <div class="lifestyle-modal-icon cheque-management-icon"><i class="fa-solid fa-receipt"></i></div>
+                    <p class="lifestyle-modal-eyebrow">Cheque services</p>
+                    <h2 id="chequeModalTitle">Manage your cheques</h2>
+                    <p class="lifestyle-modal-subtitle">Request a cheque book and keep track of your cheque activity.</p>
+                    <div class="cheque-service-actions">
+                        <button type="button" onclick="requestChequeBook()"><i class="fa-solid fa-book"></i><span><strong>Request cheque book</strong><small>Delivery within 5–7 working days</small></span></button>
+                        <button type="button" onclick="showChequeStatus()"><i class="fa-solid fa-clock-rotate-left"></i><span><strong>Cheque book status</strong><small id="chequeStatusText">No active request</small></span></button>
+                        <button type="button" onclick="showChequeHistory()"><i class="fa-solid fa-list"></i><span><strong>Cheque history</strong><small>View issued and presented cheques</small></span></button>
+                    </div>
+                    <p class="cheque-feedback" id="chequeFeedback" role="status"></p>
+                </div>
+            </div>
+
+            <div class="lifestyle-modal-overlay" id="cardPinModal" hidden>
+                <div class="lifestyle-modal pin-modal" role="dialog" aria-modal="true" aria-labelledby="cardPinTitle">
+                    <button type="button" class="lifestyle-modal-close" onclick="closeCardPinModal()" aria-label="Close">&times;</button>
+                    <div class="pin-lock-icon"><i class="fa-solid fa-lock"></i></div>
+                    <p class="lifestyle-modal-eyebrow">Security check</p>
+                    <h2 id="cardPinTitle">Unfreeze your card</h2>
+                    <p class="lifestyle-modal-subtitle">Enter your card PIN to restore card payments.</p>
+                    <form id="cardPinForm" class="card-pin-form">
+                        <label for="cardPinInput">Card PIN</label>
+                        <div class="pin-input-wrap">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" id="cardPinInput" inputmode="numeric" autocomplete="off" placeholder="Enter PIN" required>
+                            <button type="button" id="pinVisibilityBtn" onclick="togglePinVisibility()" aria-label="Show PIN"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <p class="pin-form-error" id="pinFormError" role="alert"></p>
+                        <button type="submit" class="lifestyle-pay-btn"><i class="fa-solid fa-unlock"></i> Unfreeze card</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="lifestyle-modal-overlay" id="billPaymentModal" hidden>
+                <div class="lifestyle-modal" role="dialog" aria-modal="true" aria-labelledby="billPaymentTitle">
+                    <button type="button" class="lifestyle-modal-close" onclick="closeBillPayment()" aria-label="Close">&times;</button>
+                    <div class="lifestyle-modal-icon bill-payment-modal-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <p class="lifestyle-modal-eyebrow">Bill payments</p>
+                    <h2 id="billPaymentTitle">Pay utility bill</h2>
+                    <p class="lifestyle-modal-subtitle" id="billPaymentSubtitle">Make a secure payment from your DAFAH balance.</p>
+                    <form id="billPaymentForm" class="lifestyle-booking-form">
+                        <label><span id="billRecipientLabel">Provider</span><input type="text" id="billRecipient" placeholder="e.g. IKEDC" required></label>
+                        <div class="lifestyle-form-grid">
+                            <label><span id="billReferenceLabel">Meter number</span><input type="text" id="billReference" placeholder="Enter reference" required></label>
+                            <label><span>Amount (₦)</span><input type="number" id="billAmount" min="100" step="100" placeholder="0" required></label>
+                        </div>
+                        <p class="lifestyle-balance-line">Available balance: <strong id="billAvailableBalance">₦0</strong></p>
+                        <p class="lifestyle-form-error" id="billFormError" role="alert"></p>
+                        <button type="submit" class="lifestyle-pay-btn" id="billPayButton">Pay bill</button>
+                    </form>
+                    <div class="lifestyle-success" id="billPaymentSuccess" hidden><i class="fa-solid fa-circle-check"></i><h3>Payment successful</h3><p id="billSuccessMessage"></p><button type="button" class="lifestyle-pay-btn" onclick="closeBillPayment()">Done</button></div>
+                </div>
+            </div>
+
+
+        </main>
+
+    </div>
+
+    <!-- TRANSFER BOTTOM SHEET OVERLAY -->
+    <div class="transfer-sheet-overlay" id="transferOverlay" onclick="closeTransferSheet()"></div>
+
+    <!-- TRANSFER BOTTOM SHEET -->
+    <div class="transfer-sheet" id="transferSheet">
+        <div class="transfer-sheet-handle"></div>
+        <p class="transfer-sheet-title">Transfer Money</p>
+        <p class="transfer-sheet-sub">Choose transfer type</p>
+
+        <div class="transfer-sheet-grid">
+
+            <a href="/dafah-transfer.html" class="transfer-sheet-card ts-dafah">
+                <div class="transfer-sheet-icon">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                </div>
+                <h4>DAFAH Transfer</h4>
+                <p>Internal • Free</p>
+            </a>
+
+            <a href="/transfer.html" class="transfer-sheet-card ts-other">
+                <div class="transfer-sheet-icon">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <h4>Other Bank</h4>
+                <p>Any Nigerian bank</p>
+            </a>
+
+            <a href="/global-transfer-section/global-transfer.html" class="transfer-sheet-card ts-global">
+                <div class="transfer-sheet-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <h4>Global Transfer</h4>
+                <p>Send worldwide</p>
+            </a>
+
+            <a href="/scheduled-section/scheduled-transfer.html" class="transfer-sheet-card ts-scheduled">
+                <div class="transfer-sheet-icon">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <h4>Scheduled</h4>
+                <p>Auto transfers</p>
+            </a>
+
+        </div>
+
+        <button class="transfer-sheet-cancel" onclick="closeTransferSheet()">Cancel</button>
+    </div>
+
+    <!-- FLOATING MOBILE AI SUPPORT -->
+    <a class="mobile-ai-fab" href="/customer-service/customer.html" aria-label="Open AI customer service">
+        <i class="fa-solid fa-robot"></i>
+    </a>
+
+    <!-- MOBILE BOTTOM NAV -->
+    <nav class="mobile-bottom-nav">
+
+        <a href="/dashboard.html" class="mobile-nav-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+
+        <a href="/transaction-history-section/transaction.html" class="mobile-nav-item">
+            <i class="fa-solid fa-receipt"></i>
+            <span>Transactions</span>
+        </a>
+
+        <div class="mobile-nav-center">
+            <button class="mobile-nav-center-btn" onclick="openTransferSheet()">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            </button>
+        </div>
+
+        <!-- MORE BUTTON -->
+        <button class="mobile-nav-item" onclick="openMoreSheet()">
+            <i class="fa-solid fa-grid-2"></i>
+            <span>More</span>
+        </button>
+
+        <a href="/profile.html" class="mobile-nav-item">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+
+    </nav>
+
+
+
+    <!-- MORE SHEET OVERLAY -->
+    <div class="transfer-sheet-overlay" id="moreOverlay" onclick="closeMoreSheet()"></div>
+
+    <!-- MORE SHEET -->
+    <div class="transfer-sheet" id="moreSheet">
+        <div class="transfer-sheet-handle"></div>
+        <p class="transfer-sheet-title">More Services</p>
+        <p class="transfer-sheet-sub">Account & other services</p>
+
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px;">
+
+            <a href="/transaction-history-section/transaction.html" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;">
+                    <i class="fa-solid fa-receipt" style="color:#16a34a;"></i>
+                </div>
+                <div>
+                    <p class="more-sheet-title">Transaction History</p>
+                    <p class="more-sheet-sub">View all transactions</p>
+                </div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+
+            <a href="/statement-section/generate-statement.html" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;">
+                    <i class="fa-solid fa-file-export" style="color:#16a34a;"></i>
+                </div>
+                <div>
+                    <p class="more-sheet-title">Generate Statement</p>
+                    <p class="more-sheet-sub">Export PDF or CSV</p>
+                </div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+
+            <a href="/beneficiaries-section/beneficiaries.html" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;">
+                    <i class="fa-solid fa-users" style="color:#16a34a;"></i>
+                </div>
+                <div>
+                    <p class="more-sheet-title">Beneficiaries</p>
+                    <p class="more-sheet-sub">Saved contacts</p>
+                </div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+
+            <a href="/analytics.html" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;"><i class="fa-solid fa-chart-line" style="color:#16a34a;"></i></div>
+                <div><p class="more-sheet-title">Analytics</p><p class="more-sheet-sub">Track your finances</p></div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+
+            <a href="/dashboard.html#cheques-cards" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;"><i class="fa-solid fa-credit-card" style="color:#16a34a;"></i></div>
+                <div><p class="more-sheet-title">Cards</p><p class="more-sheet-sub">Manage your cards</p></div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+
+            <a href="/loan-section/loan.html" class="more-sheet-item">
+                <div class="more-sheet-icon" style="background:#f0fdf4;"><i class="fa-solid fa-hand-holding-dollar" style="color:#16a34a;"></i></div>
+                <div><p class="more-sheet-title">Loan</p><p class="more-sheet-sub">Apply and manage loans</p></div>
+                <i class="fa-solid fa-chevron-right more-sheet-arrow"></i>
+            </a>
+        </div>
+
+        <button class="transfer-sheet-cancel" onclick="closeMoreSheet()">Close</button>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="/js/data.js"></script>
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/theme.js"></script>
+</body>
+
+</html>
+</body>
+
+</html>

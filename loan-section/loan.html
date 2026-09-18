@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/loan-section/loan.css">
+    <link rel="stylesheet" href="/css/theme.css">
+    <title>Loans | DAFAH</title>
+</head>
+
+<body>
+
+
+
+    <!-- <button class="back-btn" onclick="window.location.href='/dashboard.html'">
+        ← Back
+    </button> -->
+
+    <aside class="sidebar">
+
+    <div class="logo logo-stacked">
+        <div>
+            <img src="/img/logo.png" alt="DAFAH Bank">
+            <p>Nigerian Digital Bank</p>
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-menu">
+
+        <a href="/dashboard.html">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </a>
+
+        <a href="/transfer.html">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            Transfers
+        </a>
+
+        <a href="/transaction-history-section/transaction.html">
+            <i class="fa-solid fa-receipt"></i>
+            Transactions
+        </a>
+
+        <a href="/analytics.html">
+            <i class="fa-solid fa-chart-line"></i>
+            Analytics
+        </a>
+
+        <a href="/dashboard.html#cheques-cards">
+            <i class="fa-solid fa-credit-card"></i>
+            Cards
+        </a>
+
+        <a href="/profile.html">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
+
+        <a href="/customer-service/customer.html" class="nav-item">
+            <i class="fa-solid fa-headset"></i>
+            Customer Service
+        </a>
+
+        <a href="/loan-section/loan.html" class="active">
+            <i class="fas fa-hand-holding-usd"></i>
+            Loan
+        </a>
+
+    </nav>
+
+</aside>
+  <div class="main-content">
+    <div class="loan-box">
+        <h3>I want to get a loan for:</h3>
+
+        <div class="amount-box">
+             ₦<span id="amount">1000</span>
+        </div>
+
+        <div class="slider-wrap">
+            <button id="minus">−</button>
+
+            <input type="range" id="slider" min="1000" max="1000000" step="100" value="1000">
+
+            <button id="plus">+</button>
+        </div>
+
+        <div class="table">
+            <div class="row header">
+                <span>Term</span>
+                <span>APR</span>
+                <span>Monthly cost</span>
+            </div>
+
+            <div id="results"></div>
+        </div>
+
+        <button class="cta">Get my personalised rates</button>
+    </div>
+
+    </div>
+
+
+    <script src="/loan-section/loan.js"></script>
+    <script src="/js/theme.js"></script>
+</body>
+
+</html>

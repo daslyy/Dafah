@@ -1,0 +1,165 @@
+/* Shared authenticated-area theme. The dashboard toggle stores its selection
+   under `theme`; every signed-in page loads these overrides. */
+body.dark-theme {
+    --black-color: #f4f8f5;
+    --black: #e5eee8;
+    --text-gray: #a9b8ad;
+    --border: #2d4437;
+    --dashboard-bg: #101b14;
+    --light-green: #173c25;
+    --white: #17231b;
+    --loan-surface: #17231b;
+    --loan-bg: #101b14;
+    --card-shadow: 0 12px 30px rgba(0, 0, 0, .28);
+    background: #101b14;
+    color: #f4f8f5;
+}
+
+body.dark-theme .main-content,
+body.dark-theme .transfer-page,
+body.dark-theme .txh-page,
+body.dark-theme .gt-page,
+body.dark-theme .scheduled-page,
+body.dark-theme .statement-page,
+body.dark-theme .ben-page,
+body.dark-theme .cs-main,
+body.dark-theme .topup-main,
+body.dark-theme .profile-main,
+body.dark-theme .service-area {
+    background: #101b14;
+    color: #f4f8f5;
+}
+
+body.dark-theme .topbar,
+body.dark-theme .search-wrapper,
+body.dark-theme .notification-btn,
+body.dark-theme .theme-toggle-btn,
+body.dark-theme .hero-box,
+body.dark-theme .chart-card,
+body.dark-theme .recent-section,
+body.dark-theme .service-tabs,
+body.dark-theme .service-card,
+body.dark-theme .add-money-dropdown,
+body.dark-theme .profile-card,
+body.dark-theme .panel-card,
+body.dark-theme .transfer-card,
+body.dark-theme .txh-card,
+body.dark-theme .gt-card,
+body.dark-theme .scheduled-card,
+body.dark-theme .statement-card,
+body.dark-theme .ben-card,
+body.dark-theme .cs-chat-card,
+body.dark-theme .topup-card,
+body.dark-theme .loan-box,
+body.dark-theme .mobile-bottom-nav,
+body.dark-theme .transfer-sheet {
+    background: #17231b;
+    color: #f4f8f5;
+    border-color: #2d4437;
+}
+
+body.dark-theme .txh-mobile-sheet {
+    background: #17231b;
+    color: #f4f8f5;
+    border: 1px solid #2d4437;
+}
+
+body.dark-theme .txh-mobile-close {
+    background: #214a2d;
+    color: #bbf7d0;
+}
+
+body.dark-theme .txh-mobile-sheet .txh-detail-row {
+    border-bottom-color: #2d4437;
+}
+
+body.dark-theme .txh-mobile-sheet .txh-detail-row span,
+body.dark-theme .txh-mobile-sheet .txh-detail-time {
+    color: #a9b8ad;
+}
+
+body.dark-theme .txh-mobile-sheet .txh-detail-row strong {
+    color: #f4f8f5;
+}
+
+/* Page-specific surfaces that used literal white values instead of the
+   shared dashboard variables. */
+body.dark-theme .transfer-wrapper,
+body.dark-theme .transfer-container,
+body.dark-theme .transfer-form,
+body.dark-theme .transfer-review,
+body.dark-theme .txh-content,
+body.dark-theme .txh-table-wrap,
+body.dark-theme .txh-mobile-detail,
+body.dark-theme .st-content,
+body.dark-theme .st-filter-card,
+body.dark-theme .st-preview-card,
+body.dark-theme .ben-content,
+body.dark-theme .ben-view,
+body.dark-theme .sch-content,
+body.dark-theme .sch-form-card,
+body.dark-theme .cs-chat-window,
+body.dark-theme .cs-message-input,
+body.dark-theme .topup-content,
+body.dark-theme .topup-modal,
+body.dark-theme .topup-success-modal {
+    background: #17231b !important;
+    color: #f4f8f5;
+    border-color: #2d4437;
+}
+
+body.dark-theme .txh-page .txh-card,
+body.dark-theme .txh-page .txh-summary-card,
+body.dark-theme .statement-page .st-card,
+body.dark-theme .ben-page .ben-card,
+body.dark-theme .scheduled-page .scheduled-card,
+body.dark-theme .cs-page .cs-card,
+body.dark-theme .topup-page .topup-card {
+    background: #17231b !important;
+    color: #f4f8f5;
+    border-color: #2d4437;
+}
+
+body.dark-theme .loan-box .amount-box,
+body.dark-theme .loan-box .header,
+body.dark-theme .loan-box .row:not(.header) {
+    background: #1d3023;
+    border-color: #2d4437;
+    color: #e5eee8;
+}
+
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea,
+body.dark-theme .row,
+body.dark-theme .more-sheet-item,
+body.dark-theme .transfer-sheet-cancel {
+    background-color: #101b14;
+    color: #f4f8f5;
+    border-color: #2d4437;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme .section-title h2,
+body.dark-theme .transaction-info h3,
+body.dark-theme .more-sheet-title,
+body.dark-theme .transfer-sheet-card h4 {
+    color: #f4f8f5;
+}
+
+body.dark-theme .row.header,
+body.dark-theme .table {
+    background: #1d3023;
+    border-color: #2d4437;
+}
+
+body.dark-theme .transaction-item:hover,
+body.dark-theme .service-card:hover,
+body.dark-theme .more-sheet-item:hover {
+    background: #214a2d;
+}

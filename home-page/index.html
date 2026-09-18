@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAFAH | Your New Favourite Bank</title>
+    <link rel="icon" href="/img/favicon.png" sizes="32x32" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/home-page/style.css">
+    <link rel="stylesheet" href="/css/hero.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/globalTransfer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/script.js" defer></script>
+    <script src="/js/globalTransfer.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-logo">
+            <a href="/home-page/index.html"><img src="/img/logo.png" alt="Dafah logo"></a>
+        </div>
+
+        <div class="navCta">
+            <nav class="header-nav">
+                <a href="#" class="nav-item dropdown active">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Personal</span>
+                    <i class="fa-solid fa-chevron-down chevron"></i>
+                </a>
+
+                <!-- Mega menu -->
+                <div class="mega-menu">
+                    <div class="left-menu">
+                        <p class="active" data-target="accounts">Current Accounts
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                        <p data-target="why">Why DAFAH?
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                        <p data-target="savings">Savings & Grow
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                        <p data-target="loans">Loans & Credit
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                        <p data-target="insurance">Insurance & Safety <span class="badge-new">New</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                        <p data-target="support">Help & Support
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </p>
+                    </div>
+
+                    <div class="right-menu">
+                        <div class="content active" id="accounts">
+                            <h3 class="mega-title">Current accounts</h3>
+                            <p class="mega-subtitle">It all starts with our personal current account</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper red-card"><i class="fa-solid fa-credit-card"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>Personal account</h4>
+                                        <p>Our award-winning daily account</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper grey-card"><i class="fa-solid fa-users-rectangle"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>Joint account</h4>
+                                        <p>Manage shared bills and spends together</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper pink-card"><i class="fa-solid fa-child-reaching"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>Under 16s account</h4>
+                                        <p>Give them money confidence early</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper orange-card"><i
+                                            class="fa-solid fa-graduation-cap"></i></div>
+                                    <div class="card-text">
+                                        <h4>16-17s account</h4>
+                                        <p>Step into independent financial life</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <span>See all current accounts</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="content" id="why">
+                            <h3 class="mega-title">Why choose DAFAH?</h3>
+                            <p class="mega-subtitle">The smart, transparent and reliable way to bank</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper gold-shield"><i class="fa-solid fa-shield-halved"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>Safe & Secure</h4>
+                                        <p>FSCS protected and multi-encrypted security</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper green-dollar"><i
+                                            class="fa-solid fa-circle-dollar-to-slot"></i></div>
+                                    <div class="card-text">
+                                        <h4>Zero Hidden Fees</h4>
+                                        <p>No foreign transaction fees, no surprise costs</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper blue-headset"><i class="fa-solid fa-headset"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>24/7 Live Support</h4>
+                                        <p>Speak to a real customer support hero anytime</p>
+                                    </div>
+                                </a>
+                                <a href="/globalTransfer.html" class="mega-card">
+                                    <div class="card-icon-wrapper purple-globe"><i
+                                            class="fa-solid fa-earth-americas"></i></div>
+                                    <div class="card-text">
+                                        <h4>Global Transfers</h4>
+                                        <p>Send money to 50+ countries with low rates</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    <span>Discover why 8+ million customers trust us</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="content" id="savings">
+                            <h3 class="mega-title">Savings & Grow</h3>
+                            <p class="mega-subtitle">Make your hard-earned money work harder for you</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper green-seed"><i class="fa-solid fa-seedling"></i></div>
+                                    <div class="card-text">
+                                        <h4>Easy Access Saver</h4>
+                                        <p>Add and withdraw money instantly whenever you need</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper brown-vault"><i class="fa-solid fa-vault"></i></div>
+                                    <div class="card-text">
+                                        <h4>Fixed Rate Pots</h4>
+                                        <p>Lock in a higher interest rate with fixed periods</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper blue-shuffle"><i class="fa-solid fa-shuffle"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>Salary Sorter</h4>
+                                        <p>Automatically distribute incoming paychecks</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper gold-gift"><i class="fa-solid fa-gift"></i></div>
+                                    <div class="card-text">
+                                        <h4>Cashback Rewards</h4>
+                                        <p>Earn cashback while shopping at top brands</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-calculator"></i>
+                                    <span>Try our savings interest calculator</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="content" id="loans">
+                            <h3 class="mega-title">Loans & Credit</h3>
+                            <p class="mega-subtitle">Simple, straightforward and flexible options to borrow</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper green-hand"><i
+                                            class="fa-solid fa-hand-holding-dollar"></i></div>
+                                    <div class="card-text">
+                                        <h4>Personal Loans</h4>
+                                        <p>Borrow up to £25k with transparent APRs</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper coral-card"><i class="fa-regular fa-credit-card"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>Flex Credit Card</h4>
+                                        <p>Spread purchases over 3 months fee-free</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper red-arrow"><i class="fa-solid fa-arrow-down-long"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>Overdraft Limit</h4>
+                                        <p>Emergency fee buffers for peace of mind</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper teal-gauge"><i class="fa-solid fa-gauge-high"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>Credit Score Check</h4>
+                                        <p>Track your credit score progress for free in app</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-hand-holding-heart"></i>
+                                    <span>Borrowing check eligibility calculator</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="content" id="insurance">
+                            <h3 class="mega-title">Insurance & Safety</h3>
+                            <p class="mega-subtitle">Ensure peace of mind for the things that matter most</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper blue-phone"><i
+                                            class="fa-solid fa-mobile-screen-button"></i></div>
+                                    <div class="card-text">
+                                        <h4>Phone Insurance</h4>
+                                        <p>Cover against loss, liquid damage & screen smash</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper orange-plane"><i
+                                            class="fa-solid fa-plane-departure"></i></div>
+                                    <div class="card-text">
+                                        <h4>Travel Cover</h4>
+                                        <p>Worldwide multi-trip medical & delay cover</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper red-heart"><i class="fa-solid fa-heart-pulse"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>Life Insurance</h4>
+                                        <p>Simple and swift family cover from £1 a month</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper purple-bag"><i class="fa-solid fa-bag-shopping"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>Purchase Cover</h4>
+                                        <p>Refund protection on stolen or damaged orders</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-umbrella"></i>
+                                    <span>Explore premium DAFAH insurance plans</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="content" id="support">
+                            <h3 class="mega-title">Help & Support</h3>
+                            <p class="mega-subtitle">Answers, live assistance and digital ticket support</p>
+                            <div class="mega-card-grid">
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper yellow-question"><i
+                                            class="fa-solid fa-circle-question"></i></div>
+                                    <div class="card-text">
+                                        <h4>Help Center FAQs</h4>
+                                        <p>Find instant answers to popular banking topics</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper green-chat"><i class="fa-regular fa-comments"></i>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4>Live Chat Agent</h4>
+                                        <p>Secure 1-on-1 chat in the DAFAH mobile app</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper red-excl"><i
+                                            class="fa-solid fa-circle-exclamation"></i></div>
+                                    <div class="card-text">
+                                        <h4>Report Lost Card</h4>
+                                        <p>Instantly freeze and replacement order a card</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-card">
+                                    <div class="card-icon-wrapper blue-book"><i class="fa-solid fa-book-open"></i></div>
+                                    <div class="card-text">
+                                        <h4>Safety Guides</h4>
+                                        <p>Tips to protect your savings from online scams</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-bottom-bar">
+                                    <i class="fa-solid fa-headset"></i>
+                                    <span>Visit our full help & support knowledgebase</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Business</span>
+                </a>
+            </nav>
+
+            <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Light/Dark Mode">
+                <i class="fa-regular fa-moon"></i>
+            </button>
+
+            <div class="header-cta">
+                <a href="/sign-up/sign.html" class="btn-signup" id="open-signup">Sign up</a>
+            </div>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+    <div class="hero">
+
+        <div class="slide active">
+            <img src="/img/hero-slide.png" class="img1" />
+            <div class="overlay"></div>
+            <div class="contents">
+                <h2>Smart Banking Starts Here</h2>
+                <p>Experience fast, secure, and seamless banking right from your fingertips anytime, anywhere.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="/img/hero-slide1.png" />
+            <div class="overlay"></div>
+            <div class="contents">
+                <h2>Grow Your Wealth with Confidence</h2>
+                <p>Track, analyze, and grow your finances with powerful tools designed for smarter decisions.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="/img/hero-slide2.png" class="img3" />
+            <div class="overlay"></div>
+            <div class="contents">
+                <h2>Security You Can Trust</h2>
+                <p>Advanced protection and encrypted systems keep your transactions and data safe at all times.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="/img/hero-slide3.png" />
+            <div class="overlay"></div>
+            <div class="contents">
+                <h2>Banking Without Borders</h2>
+                <p>Send and receive money globally with ease and stay connected wherever you are.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="/img/hero-slide4.png" />
+            <div class="overlay"></div>
+            <div class="contents">
+                <h2>Simple for Everyone</h2>
+                <p>Our easy-to-use platform makes banking accessible for all ages without stress.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="/img/hero-slide5.png" class="img6" />
+            <div class="overlay"></div>
+            <div class="contents">
+                <h2>Built on Trust & People</h2>
+                <p>We are committed to delivering reliable services backed by a passionate team.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-left">
+                    <span class="about-tagline">WHO WE ARE</span>
+                    <h2>Effortless, intelligent, and built around you.</h2>
+                    <p class="about-lead">
+                        In a world that moves fast, your financial experience should keep up – seamless, secure, and
+                        always within reach.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature-box">
+                            <div class="feature-icon"><i class="fa-solid fa-feather"></i></div>
+                            <div>
+                                <h5>User-First Precision</h5>
+                                <p>Every flow and tool is crafted with care to ensure banking is intuitive.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-box">
+                            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div>
+                                <h5>Uncompromising Security</h5>
+                                <p>Multi-layered encryption and robust safety shield every single penny.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Collapsible extra features wrapper -->
+                    <div class="extra-features-wrapper" id="extraFeaturesWrapper">
+                        <div class="about-features extra-features-grid">
+                            <div class="about-feature-box">
+                                <div class="feature-icon"><i class="fa-solid fa-eye"></i></div>
+                                <div>
+                                    <h5>Our Vision</h5>
+                                    <p>To create a banking experience that is secure, accessible, and empowering for
+                                        individuals and businesses everywhere.</p>
+                                </div>
+                            </div>
+                            <div class="about-feature-box">
+                                <div class="feature-icon"><i class="fa-solid fa-bullseye"></i></div>
+                                <div>
+                                    <h5>Our Mission</h5>
+                                    <p>To provide reliable banking solutions that help customers manage, grow, and
+                                        protect their finances with confidence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-right">
+                    <p>
+                        We’ve created a digital platform that goes beyond basic transactions. It’s a system designed to
+                        give you clarity, control, and confidence in every financial decision you make. Whether you’re
+                        sending money across borders, managing your daily spending, or planning for the future, DAFAH
+                        ensures every interaction is smooth and intuitive.
+                    </p>
+                    <p>
+                        Our approach is simple: remove the unnecessary, refine the essential, and deliver a banking
+                        experience that feels natural. No long processes, no hidden complexities, no compromises on
+                        security. Just powerful financial tools, designed with precision and built to work for you.
+                    </p>
+                    <div class="more-content" id="moreContent">
+                        <p>
+                            Whether you’re sending money across borders, managing your daily spending, or planning for
+                            the future, DAFAH ensures every interaction is smooth and intuitive.
+                        </p>
+                        <p>
+                            With a focus on speed, reliability, and user-first design, DAFAH is not just keeping up with
+                            modern banking – we’re shaping what it should be.
+                        </p>
+                        <p>
+                            Because your money deserves more than just a place to stay – it deserves a system that works
+                            for you.
+                        </p>
+                    </div>
+                    <button class="toggle-button" id="toggle-button" type="button" aria-expanded="false">
+                        <span class="button-text">Read More</span>
+                        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                    </button>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-num" data-target="8" data-suffix="M+">0M+</span>
+                            <span class="stat-label">Active Customers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num" data-target="50" data-suffix="+">0+</span>
+                            <span class="stat-label">Global Currencies</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">100%</span>
+                            <span class="stat-label">Digital Control</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="awards">
+        <div class="container">
+
+            <h2>Welcome to award-winning banking</h2>
+            <p class="subtitle">
+                We build banking people love – but being recognised is a nice little extra.
+            </p>
+
+            <div class="awards-grid">
+
+                <div class="award">
+                    <div class="icon">
+                        <!-- Trophy SVG -->
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M6 2h12v3h3v3c0 3.31-2.69 6-6 6h-1v2h3v2H7v-2h3v-2H9c-3.31 0-6-2.69-6-6V5h3V2zm-1 6c0 2.21 1.79 4 4 4V5H5v3zm14 0V5h-4v7c2.21 0 4-1.79 4-4z" />
+                        </svg>
+                    </div>
+                    <h3>11 times winner</h3>
+                    <p>at the British Bank Awards</p>
+                </div>
+
+                <div class="award">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M6 2h12v3h3v3c0 3.31-2.69 6-6 6h-1v2h3v2H7v-2h3v-2H9c-3.31 0-6-2.69-6-6V5h3V2zm-1 6c0 2.21 1.79 4 4 4V5H5v3zm14 0V5h-4v7c2.21 0 4-1.79 4-4z" />
+                        </svg>
+                    </div>
+                    <h3>Best Personal Current Account</h3>
+                    <p>Moneynet 2026</p>
+                </div>
+
+                <div class="award">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M6 2h12v3h3v3c0 3.31-2.69 6-6 6h-1v2h3v2H7v-2h3v-2H9c-3.31 0-6-2.69-6-6V5h3V2zm-1 6c0 2.21 1.79 4 4 4V5H5v3zm14 0V5h-4v7c2.21 0 4-1.79 4-4z" />
+                        </svg>
+                    </div>
+                    <h3>Best Regular Savings Provider</h3>
+                    <p>Moneynet 2026</p>
+                </div>
+
+                <div class="award">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M6 2h12v3h3v3c0 3.31-2.69 6-6 6h-1v2h3v2H7v-2h3v-2H9c-3.31 0-6-2.69-6-6V5h3V2zm-1 6c0 2.21 1.79 4 4 4V5H5v3zm14 0V5h-4v7c2.21 0 4-1.79 4-4z" />
+                        </svg>
+                    </div>
+                    <h3>Best Savings App</h3>
+                    <p>Moneynet 2026</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Transfer Calculator Section -->
+    <section class="transfer-section">
+        <div class="transfer-container">
+
+            <!-- View 1: Country Selection Grid -->
+            <div id="transfer-grid-wrapper" class="fade-in">
+                <div class="transfer-grid-header">
+                    <h2>Dafah works nearly everywhere</h2>
+                    <span class="send-money-pill">Send money</span>
+                </div>
+
+                <div class="countries-grid" id="countries-grid">
+                    <!-- Will be populated dynamically by transfer.js -->
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="reviews-container">
+            <div class="reviews-header">
+                <h2>Don't just take our<br>word for it.</h2>
+                <div class="reviews-avatars" id="reviews-avatars">
+                    <button class="avatar-btn active" data-index="0">
+                        <svg class="progress-ring" width="64" height="64">
+                            <circle class="progress-ring__circle" stroke="#e2e8f0" stroke-width="3" fill="transparent"
+                                r="30" cx="32" cy="32" />
+                            <circle class="progress-ring__progress" stroke="#0056ff" stroke-width="3" fill="transparent"
+                                r="30" cx="32" cy="32" />
+                        </svg>
+                        <img src="/img/rev1.jpg" alt="User 1">
+                    </button>
+                    <button class="avatar-btn" data-index="1">
+                        <svg class="progress-ring" width="64" height="64">
+                            <circle cass="progress-ring__circle" stroke="#e2e8f0" stroke-width="3" fill="transparent"
+                                r="30" cx="32" cy="32" />
+                            <circle class="progress-ring__progress" stroke="#0056ff" stroke-width="3" fill="transparent"
+                                r="30" cx="32" cy="32" />
+                        </svg>
+                        <img src="/img/rev2.jpg" alt="User 2">
+                    </button>
+                    <button class="avatar-btn" data-index="2">
+                        <svg class="progress-ring" width="64" height="64">
+                            <circle class="progress-ring__circle" stroke="#e2e8f0" stroke-width="3" fill="transparent"
+                                r="30" cx="32" cy="32" />
+                            <circle class="progress-ring__progress" stroke="#0056ff" stroke-width="3" fill="transparent"
+                                r="30" cx="32" cy="32" />
+                        </svg>
+                        <img src="https://i.pravatar.cc/150?img=44" alt="User 3">
+                    </button>
+                    <button class="avatar-btn" data-index="3">
+                        <svg class="progress-ring" width="64" height="64">
+                            <circle class="progress-ring__circle" stroke="#e2e8f0" stroke-width="3" fill="transparent"
+                                r="30" cx="32" cy="32" />
+                            <circle class="progress-ring__progress" stroke="#0056ff" stroke-width="3" fill="transparent"
+                                r="30" cx="32" cy="32" />
+                        </svg>
+                        <img src="https://i.pravatar.cc/150?img=42" alt="User 4">
+                    </button>
+                </div>
+            </div>
+
+            <div class="reviews-content">
+                <div class="reviews-text-column">
+                    <div class="quote-icon">
+                        <svg width="80" height="60" viewBox="0 0 60 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18.8 49.5C13.5 49.5 9 47.7 5.4 44.1C1.8 40.5 0 36 0 30.6C0 24.3 1.8 18.2 5.4 12.3C9 6.4 14.1 1.7 20.7 0.2L24.3 5.6C19.8 7.4 16.1 10.1 13.2 13.7C10.3 17.3 8.7 21.2 8.4 25.4H18.6C22.2 25.4 25.2 26.6 27.6 29.1C30 31.5 31.2 34.6 31.2 38.4C31.2 41.7 30 44.5 27.6 46.8C25.2 49.1 22.2 50.3 18.8 49.5ZM47.6 49.5C42.3 49.5 37.8 47.7 34.2 44.1C30.6 40.5 28.8 36 28.8 30.6C28.8 24.3 30.6 18.2 34.2 12.3C37.8 6.4 42.9 1.7 49.5 0.2L53.1 5.6C48.6 7.4 44.9 10.1 42 13.7C39.1 17.3 37.5 21.2 37.2 25.4H47.4C51 25.4 54 26.6 56.4 29.1C58.8 31.5 60 34.6 60 38.4C60 41.7 58.8 44.5 56.4 46.8C54 49.1 51 50.3 47.6 49.5Z"
+                                fill="#EAF0F9" />
+                        </svg>
+                    </div>
+                    <p class="review-quote" id="review-quote">DAFAH has completely changed how I handle my business
+                        finances. Payments are
+                        faster, everything is easy to track, and I no longer worry about delays or failed transactions.
+                        It’s not just about convenience, it’s about having a system I can rely on every single day. My
+                        customers are happier, and my business runs smoother because of it.</p>
+                    <div class="reviewer-info">
+                        <h4 class="reviewer-name" id="reviewer-name">Funke Davids</h4>
+                        <p class="reviewer-role" id="reviewer-role">Founder, Funks Mart</p>
+                    </div>
+                    <div class="review-navigation">
+                        <button class="nav-arrow prev" id="review-prev"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button class="nav-arrow next" id="review-next"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="reviews-video-column">
+                    <div class="video-container">
+                        <video class="review-video" id="review-video" src="/img/review1.mp4" loop playsinline></video>
+                        <button class="play-btn" id="play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                    <button class="video-next-btn" id="video-next-btn"><i
+                            class="fa-solid fa-chevron-right"></i></button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="first">
+                <div class="footer-column">
+                    <h3>Personal</h3>
+                    <ul>
+                        <li>Savings Account</li>
+                        <li>Current Accounts</li>
+                        <li>Compare Accounts</li>
+                        <li>Cards</li>
+                        <li>Loans & Credit</li>
+                        <li>Ways To Bank</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Business</h3>
+                    <ul>
+                        <li>Business Banking</li>
+                        <li>Business Cards</li>
+                        <li>SME Services</li>
+                        <li>Merchant Tools</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li>Our Company</li>
+                        <li>Careers</li>
+                        <li>Sustainability</li>
+                        <li>Contact Us</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help & Security</h3>
+                    <ul>
+                        <li>Help Center</li>
+                        <li>Security Centre</li>
+                        <li>Complaints & Support</li>
+                        <li>Report Fraud</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li>Find a Branch/ATM</li>
+                        <li>Financial Calculators</li>
+                        <li>Open an Account</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contacts">
+                <h3>Get in Touch</h3>
+                <ul>
+                    <li><i class="fa-solid fa-phone"></i> Support: +234 201 448 0000</li>
+                    <li><i class="fa-solid fa-envelope"></i> Email: support@dafah.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> HQ: Lagos, Nigeria</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <div class="bottom">
+        <div class="bottom-container">
+            <p>© 2026 Dafah Bank Limited. All Rights Reserved.</p>
+            <ul>
+                <p>Terms & Conditions</p>
+                <p>Privacy Policy</p>
+                <p>Sitemap</p>
+                <li><i class="fa-brands fa-facebook-f"></i></li>
+                <li><i class="fa-brands fa-twitter"></i></li>
+                <li><i class="fa-brands fa-instagram"></i></li>
+                <li><i class="fa-brands fa-linkedin-in"></i></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

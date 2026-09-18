@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History — DAFAH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/transaction-history-section/transaction.css">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+
+<body>
+
+<div class="txh-page">
+
+    <!-- TOP -->
+    <div class="txh-top">
+        <button class="back-btn" onclick="window.location.href='/dashboard.html'">
+            ← Back
+        </button>
+        <div>
+            <p class="txh-label">Complete History</p>
+            <h1>All Transactions</h1>
+        </div>
+    </div>
+
+    <!-- MAIN WRAPPER -->
+    <div class="txh-wrapper">
+
+        <!-- LEFT — LIST -->
+        <div class="txh-list-box">
+
+            <!-- SEARCH -->
+            <div class="txh-search-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="txSearch" placeholder="Search transactions...">
+            </div>
+
+            <!-- FILTER PILLS -->
+            <div class="txh-pills">
+                <button class="txh-pill active" data-filter="all">All</button>
+                <button class="txh-pill" data-filter="credit">Credit ↑</button>
+                <button class="txh-pill" data-filter="debit">Debit ↓</button>
+                <button class="txh-pill" data-filter="transfer">Transfer</button>
+                <button class="txh-pill" data-filter="bill">Bills</button>
+                <button class="txh-pill" data-filter="airtime">Airtime</button>
+                <button class="txh-pill" data-filter="deposit">Deposit</button>
+            </div>
+
+            <!-- DATE RANGE -->
+            <div class="txh-date-range">
+                <div class="txh-date-group">
+                    <label>From</label>
+                    <input type="date" id="txFromDate">
+                </div>
+                <div class="txh-date-group">
+                    <label>To</label>
+                    <input type="date" id="txToDate">
+                </div>
+                <button class="txh-clear-btn" id="txClearBtn">Clear</button>
+            </div>
+
+            <!-- SUMMARY -->
+            <div class="txh-summary">
+                <div class="txh-sum-box txh-credit-box">
+                    <p class="txh-sum-label">Total In</p>
+                    <p class="txh-sum-val" id="txTotalCredit">₦0</p>
+                </div>
+                <div class="txh-sum-box txh-debit-box">
+                    <p class="txh-sum-label">Total Out</p>
+                    <p class="txh-sum-val" id="txTotalDebit">₦0</p>
+                </div>
+                <div class="txh-sum-box txh-neutral-box">
+                    <p class="txh-sum-label">Count</p>
+                    <p class="txh-sum-val" id="txCount">0</p>
+                </div>
+            </div>
+
+            <!-- TRANSACTION LIST -->
+            <div id="txList"></div>
+
+            <!-- EMPTY -->
+            <div class="txh-empty" id="txEmpty" style="display:none;">
+                <i class="fa-solid fa-receipt"></i>
+                <p>No transactions found</p>
+            </div>
+
+        </div>
+
+        <!-- RIGHT — DETAIL -->
+        <div class="txh-detail-box" id="txDetailBox">
+
+            <!-- DEFAULT -->
+            <div class="txh-detail-default" id="txDetailDefault">
+                <i class="fa-solid fa-hand-pointer"></i>
+                <p class="txh-detail-default-title">Select a transaction</p>
+                <p class="txh-detail-default-sub">Click any transaction to see full details</p>
+            </div>
+
+            <!-- DETAIL CONTENT -->
+            <div id="txDetailContent" style="display:none;">
+
+                <!-- AMOUNT -->
+                <div class="txh-detail-amount-box" id="txDetailAmountBox">
+                    <p class="txh-detail-amount-label" id="txDetailAmountLabel">Amount</p>
+                    <p class="txh-detail-amount" id="txDetailAmount">₦0</p>
+                    <p class="txh-detail-time" id="txDetailTime">—</p>
+                </div>
+
+                <!-- STATUS -->
+                <div class="txh-detail-status">
+                    <span class="txh-status-badge">✓ Successful</span>
+                </div>
+
+                <!-- DETAILS -->
+                <div class="txh-detail-rows">
+
+                    <div class="txh-detail-row">
+                        <span>Type</span>
+                        <strong id="txDetailType">—</strong>
+                    </div>
+
+                    <div class="txh-detail-row">
+                        <span>Description</span>
+                        <strong id="txDetailDesc">—</strong>
+                    </div>
+
+                    <div class="txh-detail-row" id="txDetailNarrationRow">
+                        <span>Narration</span>
+                        <strong id="txDetailNarration">—</strong>
+                    </div>
+
+                    <div class="txh-detail-row" id="txDetailRecipientRow">
+                        <span>Recipient</span>
+                        <strong id="txDetailRecipient">—</strong>
+                    </div>
+
+                    <div class="txh-detail-row" id="txDetailBankRow">
+                        <span>Bank</span>
+                        <strong id="txDetailBank">—</strong>
+                    </div>
+
+                    <div class="txh-detail-row">
+                        <span>Date & Time</span>
+                        <strong id="txDetailDate">—</strong>
+                    </div>
+
+                    <div class="txh-detail-row" id="txDetailFeeRow">
+                        <span>Transfer Fee</span>
+                        <strong id="txDetailFee" style="color:#dc2626;">—</strong>
+                    </div>
+
+                </div>
+
+                <!-- ACTIONS -->
+                <div class="txh-detail-actions">
+                    <button class="txh-repeat-btn" id="txRepeatBtn">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        Repeat Transfer
+                    </button>
+                    <button class="txh-share-btn" id="txShareBtn">
+                        <i class="fa-solid fa-share-nodes"></i>
+                        Share Receipt
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MOBILE DETAIL OVERLAY -->
+<div class="txh-mobile-overlay" id="txMobileOverlay" onclick="closeMobileDetail()"></div>
+
+<!-- MOBILE DETAIL SHEET -->
+<div class="txh-mobile-sheet" id="txMobileSheet">
+    <button class="txh-mobile-close" type="button" onclick="closeMobileDetail()" aria-label="Close transaction details">&times;</button>
+    <div class="txh-sheet-handle"></div>
+
+    <!-- AMOUNT -->
+    <div class="txh-detail-amount-box" id="txMobileAmountBox">
+        <p class="txh-detail-amount-label" id="txMobileAmountLabel">Amount</p>
+        <p class="txh-detail-amount" id="txMobileAmount">₦0</p>
+        <p class="txh-detail-time" id="txMobileTime">—</p>
+    </div>
+
+    <!-- STATUS -->
+     <div class="txh-detail-status" style="margin:12px 0;">
+        <span class="txh-status-badge">✓ Successful</span>
+    </div>
+
+    <!-- DETAILS -->
+    <div class="txh-detail-rows">
+        <div class="txh-detail-row">
+            <span>Type</span>
+            <strong id="txMobileType">—</strong>
+        </div>
+        <div class="txh-detail-row">
+            <span>Description</span>
+            <strong id="txMobileDesc">—</strong>
+        </div>
+        <div class="txh-detail-row" id="txMobileNarrationRow">
+            <span>Narration</span>
+            <strong id="txMobileNarration">—</strong>
+        </div>
+        <div class="txh-detail-row" id="txMobileRecipientRow">
+            <span>Recipient</span>
+            <strong id="txMobileRecipient">—</strong>
+        </div>
+        <div class="txh-detail-row" id="txMobileBankRow">
+            <span>Bank</span>
+            <strong id="txMobileBank">—</strong>
+        </div>
+        <div class="txh-detail-row">
+            <span>Date & Time</span>
+            <strong id="txMobileDate">—</strong>
+        </div>
+        <div class="txh-detail-row" id="txMobileFeeRow">
+            <span>Transfer Fee</span>
+            <strong id="txMobileFee">—</strong>
+        </div>
+    </div>
+
+    <!-- ACTIONS -->
+     <div class="txh-detail-actions" style="margin-top:16px;">
+        <button class="txh-repeat-btn" id="txMobileRepeatBtn">
+            <i class="fa-solid fa-rotate-right"></i>
+            Repeat Transfer
+        </button>
+        <button class="txh-share-btn" id="txMobileShareBtn">
+            <i class="fa-solid fa-share-nodes"></i>
+            Share Receipt
+        </button>
+    </div>
+
+</div>
+
+<script src="/js/data.js"></script>
+<script src="/transaction-history-section/transaction.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+</html>

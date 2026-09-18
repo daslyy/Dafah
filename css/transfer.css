@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #0f9d58;
+    --primary-color: #16a34a;
+    --general-font: 'Outfit', sans-serif;
+    --black-color: #111;
+    --deep-green: #166534;
+    --light-green: #dcfce7;
+    --white: #fff;
+    --black: #111827;
+    --text-gray: #6b7280;
+    --border: #e5e7eb;
+    --dashboard-bg: #f5f7fa;
+    --card-shadow:
+        0 10px 30px rgba(0, 0, 0, .05);
+         /* TRANSACTION COLORS */
+    --debit-color: #dc2626;
+    --debit-bg: #fee2e2;
+    --credit-color: var(--primary-color);
+    --credit-bg: var(--light-green);
+    --bill-color: #d97706;
+    --bill-bg: #fef3c7;
+    --airtime-color: #0284c7;
+    --airtime-bg: #e0f2fe;
+}
+
+.instant-label{
+    color: #0f9d58;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.free-fee{
+    color: #0f9d58;
+}
+
+html, body{
+    overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5,h6{
+         font-family: var(--general-font); 
+
+}
+
+body{
+   font-family: var(--general-font); 
+}
+
+/* Transfer page polish */
+.transfer-page {
+    min-height: 100vh;
+    padding: clamp(24px, 5vw, 56px);
+    background: radial-gradient(circle at 85% 0%, rgba(134, 239, 172, .16), transparent 28rem), var(--dashboard-bg);
+}
+.transfer-top { max-width: 1180px; margin: 0 auto 28px; }
+.transfer-top h1 { color: var(--deep-green); font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -.03em; }
+.transfer-wrapper { max-width: 1180px; margin: 0 auto; gap: 24px; }
+.transfer-form-box, .transfer-info { border: 1px solid var(--border); box-shadow: 0 18px 45px rgba(5,46,22,.08); }
+.transfer-form-box { padding: clamp(22px, 4vw, 38px); }
+.input-group { margin-bottom: 18px; }
+.input-group label { color: var(--deep-green); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+.input-group input, .input-group select { height: 54px; border-color: var(--border); background: var(--dashboard-bg); color: var(--black-color); border-radius: 13px; font: inherit; transition: border-color .2s, box-shadow .2s; }
+.input-group input:focus, .input-group select:focus { border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(22,163,74,.11); }
+.proceed-btn { height: 54px; border-radius: 13px; background: linear-gradient(135deg, var(--deep-green), var(--primary-color)); box-shadow: 0 10px 20px rgba(22,101,52,.2); }
+.transfer-info { padding: 30px; background: linear-gradient(150deg, #f0fdf4, #fff); }
+.transfer-info h3 { color: var(--deep-green); font-size: 20px; }
+.transfer-info p { padding: 13px 0 13px 34px; border-bottom: 1px solid rgba(22,101,52,.1); color: var(--text-gray); position: relative; }
+.transfer-info p::before { content: '✓'; position: absolute; left: 0; color: var(--primary-color); font-weight: 800; }
+.review-modal, .pin-modal { border: 1px solid var(--border); box-shadow: 0 24px 70px rgba(0,0,0,.22); }
+.review-modal h2, .pin-modal h2 { color: var(--deep-green); letter-spacing: -.03em; }
+.review-box { border: 1px solid var(--border); background: var(--dashboard-bg); border-radius: 16px; padding: 5px 16px; }
+.review-row { padding: 13px 0; border-bottom-color: var(--border); }
+.continue-btn { border-radius: 13px; background: linear-gradient(135deg, var(--deep-green), var(--primary-color)); }
+.pin-key { background: var(--dashboard-bg); border: 1px solid var(--border); transition: transform .2s, background .2s; }
+.pin-key:hover { background: var(--light-green); transform: translateY(-2px); }
+body.dark-theme .transfer-page { background: #101b14; }
+body.dark-theme .transfer-top h1, body.dark-theme .input-group label, body.dark-theme .transfer-info h3, body.dark-theme .review-modal h2, body.dark-theme .pin-modal h2 { color: #f4f8f5; }
+body.dark-theme .transfer-info { background: #17231b; }
+body.dark-theme .input-group input, body.dark-theme .input-group select { background: #101b14; color: #f4f8f5; }
+body.dark-theme .pin-key { color: #f4f8f5; }
+body.dark-theme .back-btn { background: #17231b; color: #e5eee8; border: 1px solid #2d4437; }
+body.dark-theme .bank-results { background: #17231b; border: 1px solid #2d4437; box-shadow: 0 16px 34px rgba(0,0,0,.35); }
+body.dark-theme .bank-item { color: #e5eee8; border-bottom: 1px solid rgba(45,68,55,.65); }
+body.dark-theme .bank-item:hover { background: #214a2d; }
+body.dark-theme .transfer-account-hint { color: #a9b8ad; }
+body.dark-theme .transfer-account-hint.success { color: #86efac; }
+body.dark-theme .transfer-account-hint.warn { color: #fcd34d; }
+body.dark-theme .transfer-account-hint.error { color: #fca5a5; }
+body.dark-theme .modal-overlay { background: rgba(1, 10, 5, .78); }
+body.dark-theme .review-modal, body.dark-theme .pin-modal { background: #17231b; color: #f4f8f5; border-color: #2d4437; }
+body.dark-theme .close-modal { color: #a9b8ad; }
+body.dark-theme .review-top small, body.dark-theme .review-top p { color: #a9b8ad; }
+body.dark-theme .review-box { background: #101b14; border: 1px solid #2d4437; }
+body.dark-theme .review-row { border-bottom-color: #2d4437; }
+body.dark-theme .review-row span { color: #a9b8ad; }
+body.dark-theme .review-row strong { color: #e5eee8; }
+body.dark-theme .loading-box p, body.dark-theme .success-box p { color: #a9b8ad; }
+body.dark-theme .loader { border-color: #2d4437; border-top-color: var(--primary-color); }
+@media (max-width: 600px) {
+    .transfer-top { align-items: flex-start; flex-direction: column; gap: 14px; }
+    .transfer-form-box, .transfer-info { padding: 20px; border-radius: 18px; }
+    .review-modal, .pin-modal { padding: 24px 18px; border-radius: 20px; }
+}
