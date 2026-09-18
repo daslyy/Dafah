@@ -1,5 +1,5 @@
 
-let balance = 12450000;
+let balance = 700000;
 let transactions = [
     {
         title: "Salary Payment",
