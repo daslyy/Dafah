@@ -235,6 +235,7 @@
             };
 
             localStorage.setItem('current_user', JSON.stringify(demoUser));
+            localStorage.setItem('current_session', 'active');
             localStorage.setItem('dafah_balance', JSON.stringify(demoUser.balance));
             localStorage.setItem('dafah_transactions', JSON.stringify(demoTransactions));
             window.location.href = '/dashboard.html';
@@ -706,6 +707,7 @@
                 if (user) {
                     // Save authenticated session in browser storage and redirect
                     localStorage.setItem('current_user', JSON.stringify(user));
+                    localStorage.setItem('current_session', 'active');
                     showToast(' ✨ Login successful! Redirecting you to your dashboard...');
 
                     setTimeout(() => {

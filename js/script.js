@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //    and a functional red Sign-out button.
     // 4. Attaches a click event listener to the Sign-out button that clears the session and reloads.
     const userSession = localStorage.getItem('current_user');
-    if (userSession) {
+    const hasActiveSession = localStorage.getItem('current_session') === 'active';
+    if (userSession && hasActiveSession) {
         try {
             const user = JSON.parse(userSession);
             const headerCta = document.querySelector('.header-cta');
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('sign-out-btn').addEventListener('click', (e) => {
                     e.preventDefault();
                     localStorage.removeItem('current_user');
+                    localStorage.removeItem('current_session');
                     window.location.reload();
                 });
             }
